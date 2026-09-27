@@ -1,379 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planos de Saúde Amil | Rede Nacional e Hospitais de Excelência</title>
-  <meta name="description" content="Contrate planos de saúde Amil (Individual, Familiar e PME). Tenha acesso a mais de 1.700 hospitais credenciados, telemedicina 24h e suporte de corretor autorizado.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Planos de Saúde Amil | Cotação Online e Segura">
-  <meta property="og:description" content="Planos com abrangência nacional, coparticipação inteligente e atendimento de elite.">
-  <meta property="og:type" content="website">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082e70">
+  <meta name="description" content="Conheça opções de planos Amil para você, sua família ou empresa. Compare coberturas e peça uma cotação personalizada. Atendimento consultivo pela Amil Vendas Online.">
+  <title>Amil Vendas Online | Encontre um plano que combina com você</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script defer src="assets/js/config.js"></script>
+  <script defer src="assets/js/navigation.js"></script>
+  <script defer src="assets/js/whatsapp.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="header">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
     <div class="container header-inner">
-      <div class="logo">Amil<span> Planos de Saúde</span></div>
-      
-      <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mainNav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav" id="mainNav">
-        <button class="nav-link active" data-target="home" aria-current="page">Início</button>
-        <button class="nav-link" data-target="simulador">Simulador</button>
-        <button class="nav-link" data-target="planos">Planos & Linhas</button>
-        <button class="nav-link" data-target="diferenciais">Diferenciais</button>
-        <button class="nav-link" data-target="hospitais">Rede Credenciada</button>
-        <button class="nav-link" data-target="depoimentos">Depoimentos</button>
-        <button class="nav-link" data-target="duvidas">Dúvidas</button>
+      <a class="brand" href="index.html" aria-label="Amil Vendas Online, início"><span class="brand-word">Amil</span><span>Vendas Online</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <a class="current" href="index.html">Início</a><a href="planos.html">Planos</a><a href="rede-credenciada.html">Rede credenciada</a><a href="sobre.html">Sobre</a><a href="#contato">Pedir cotação</a>
       </nav>
-      
-      <button class="btn btn-primary header-cta open-modal-btn">Falar com Corretor</button>
+      <a class="button button-small button-primary js-whatsapp" href="#contato">Fale com um consultor <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
-  <main>
-
-    <!-- 1. INÍCIO -->
-    <section class="page active" id="home">
-      <div class="hero">
-        <div class="container hero-inner">
-          <div class="hero-text">
-            <span class="badge">Correspondente Autorizado Amil</span>
-            <h1>Solidez, inovação e a maior rede de medicina do Brasil</h1>
-            <p>Mais de 45 anos de mercado e 6,1 milhões de beneficiários confiando na Amil. Planos sob medida para proteger sua família ou sua empresa com inteligência clínica e suporte total.</p>
-            <div class="hero-actions">
-              <button class="btn btn-primary open-modal-btn">Simular Cotação Personalizada</button>
-              <button class="btn btn-ghost" data-target="planos">Conhecer Portfólio</button>
-            </div>
-            <div class="hero-stats">
-              <div><strong>6,1 mi+</strong><span>beneficiários ativos</span></div>
-              <div><strong>1.700+</strong><span>hospitais credenciados</span></div>
-              <div><strong>24h</strong><span>telemedicina com Einstein</span></div>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=700&q=80" alt="Médico em ambiente hospitalar moderno" loading="lazy">
-          </div>
+  <main id="conteudo">
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> Cuidado para cada fase da vida</span>
+          <h1>Saúde bem cuidada começa com uma <em>boa escolha.</em></h1>
+          <p class="hero-lead">Compare opções Amil para você, sua família ou sua empresa com orientação clara do primeiro contato à contratação.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#contato">Quero receber uma cotação <span aria-hidden="true">→</span></a><a class="button button-link" href="planos.html">Conheça os planos <span aria-hidden="true">↗</span></a></div>
+          <div class="trust-row"><span class="trust-icon">✓</span><span>Atendimento consultivo</span><span class="trust-dot">·</span><span>Opções para diferentes perfis</span></div>
         </div>
-      </div>
-
-      <div class="gallery container">
-        <h2>Estrutura e tecnologia de ponta</h2>
-        <p class="section-subtitle">Padrão internacional de atendimento com foco na desburocratização e medicina preventiva.</p>
-        <div class="gallery-grid">
-          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&q=80" alt="Instalações de alta complexidade" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=500&q=80" alt="Profissionais de saúde qualificados" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&q=80" alt="Consultório integrado" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=500&q=80" alt="Atendimento humanizado" loading="lazy">
+        <div class="hero-art" aria-label="Ilustração de cuidado e saúde" role="img">
+          <img class="hero-photo" src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=1000&q=85" alt="Profissional de saúde em ambiente de atendimento moderno" fetchpriority="high">
+          <div class="art-card art-card-top"><span class="art-icon">♡</span><span><b>Atendimento com cuidado</b><small>Orientação para escolher com calma</small></span></div>
+          <div class="art-card art-card-bottom"><span class="heart">✓</span><span><b>Seu cuidado, seu momento</b><small>Uma conversa de cada vez</small></span></div>
         </div>
       </div>
     </section>
 
-    <!-- 2. SIMULADOR INTERATIVO -->
-    <section class="page" id="simulador">
-      <div class="container">
-        <h2>Simulador de Valores e Viabilidade</h2>
-        <p class="section-subtitle">Informe os dados básicos para calcular as opções ideais de plano e receber a tabela oficial atualizada via WhatsApp.</p>
-        
-        <div class="simulator-card">
-          <form id="simulatorForm" class="simulator-form">
-            <div class="form-group">
-              <label for="tipoPlano">Modalidade de Contratação:</label>
-              <select id="tipoPlano" required>
-                <option value="Individual / Familiar">Individual / Familiar (Pessoa Física)</option>
-                <option value="Empresarial PME">Empresarial PME (CNPJ / MEI a partir de 2 vidas)</option>
-                <option value="Corporate">Corporate / Grandes Empresas</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="faixaEtaria">Faixa Etária Principal:</label>
-              <select id="faixaEtaria" required>
-                <option value="00 a 18 anos">00 a 18 anos</option>
-                <option value="19 a 23 anos">19 a 23 anos</option>
-                <option value="24 a 28 anos" selected>24 a 28 anos</option>
-                <option value="29 a 33 anos">29 a 33 anos</option>
-                <option value="34 a 38 anos">34 a 38 anos</option>
-                <option value="39 a 43 anos">39 a 43 anos</option>
-                <option value="44 a 48 anos">44 a 48 anos</option>
-                <option value="49 a 53 anos">49 a 53 anos</option>
-                <option value="54 a 58 anos">54 a 58 anos</option>
-                <option value="59 anos ou mais">59 anos ou mais</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="regiaoAtendimento">Abrangência Geográfica:</label>
-              <select id="regiaoAtendimento" required>
-                <option value="Regional Selecionada">Regional (Foco em custo-benefício local)</option>
-                <option value="Nacional Completa">Nacional (Cobertura em todo o território brasileiro)</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary simulator-btn">Receber Cotação e Tabela no WhatsApp</button>
-          </form>
+    <section class="quick-choices section-pad compact-pad">
+      <div class="container"><div class="section-heading"><span class="eyebrow">Por onde começamos?</span><h2>Encontre o caminho certo para você</h2><p>Conte um pouco do que precisa e a gente ajuda a entender as alternativas.</p></div>
+        <div class="choice-grid">
+          <a class="choice-card" href="planos.html#individual"><span class="choice-icon">♙</span><span><b>Para mim ou minha família</b><small>Veja as opções e condições disponíveis para o seu perfil.</small></span><span class="arrow">↗</span></a>
+          <a class="choice-card" href="planos.html#empresarial"><span class="choice-icon">⌂</span><span><b>Para minha empresa</b><small>Alternativas empresariais conforme CNPJ e número de vidas.</small></span><span class="arrow">↗</span></a>
+          <a class="choice-card" href="rede-credenciada.html"><span class="choice-icon">⌖</span><span><b>Quero conferir a rede</b><small>Consulte hospitais, clínicas e profissionais por plano.</small></span><span class="arrow">↗</span></a>
         </div>
       </div>
     </section>
 
-    <!-- 3. PLANOS & LINHAS -->
-    <section class="page" id="planos">
-      <div class="container">
-        <h2>Portfólio Completo de Planos Amil</h2>
-        <p class="section-subtitle">Conheça as linhas estruturadas para atender desde o planejamento econômico até o alto padrão executivo.</p>
-        <div class="plans-grid">
+    <section class="feature-band section-pad"><div class="container feature-grid"><div><span class="eyebrow eyebrow-light">Mais informação. Melhor decisão.</span><h2>O plano ideal depende da sua realidade.</h2><p>Região de atendimento, faixa etária, composição familiar e tipo de contratação fazem diferença. Uma cotação personalizada ajuda a comparar o que realmente importa.</p><a class="button button-white js-whatsapp" href="#contato">Converse com a equipe <span aria-hidden="true">→</span></a></div><div class="feature-points"><article><span>01</span><div><b>Entenda as opções</b><p>Saiba como modalidade, acomodação e coparticipação podem afetar sua escolha.</p></div></article><article><span>02</span><div><b>Confira a rede por plano</b><p>Verifique os prestadores disponíveis na sua cidade antes de contratar.</p></div></article><article><span>03</span><div><b>Receba uma proposta</b><p>Os valores dependem do perfil, região e regras comerciais vigentes.</p></div></article></div></div></section>
 
-          <article class="plan-card">
-            <h3>Amil Fácil</h3>
-            <p class="plan-desc">Modelo focado em eficiência regional, otimizando custos sem abrir mão da qualidade básica de atendimento.</p>
-            <ul class="plan-features">
-              <li>Contratação 100% online desburocratizada</li>
-              <li>Rede regional seleta de hospitais</li>
-              <li>Excelente relação custo-benefício</li>
-            </ul>
-            <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Amil%20F%C3%A1cil" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar Condições</a>
-          </article>
+    <section class="section-pad"><div class="container split-callout"><div><span class="eyebrow">Rede credenciada</span><h2>Tem um hospital ou médico em mente?</h2><p>A rede muda conforme o produto e a região. Consulte o guia oficial da Amil para pesquisar por especialidade, prestador e localidade.</p><a class="button button-primary" href="rede-credenciada.html">Como consultar a rede <span aria-hidden="true">→</span></a></div><div class="network-illustration"><span class="network-node node-a">+</span><span class="network-node node-b">✚</span><span class="network-node node-c">+</span><span class="network-lines"></span><span class="network-center">⌖</span><small>Encontre atendimento perto de você</small></div></div></section>
 
-          <article class="plan-card">
-            <h3>Linha Selecionada (S380 / S450 / S750)</h3>
-            <p class="plan-desc">Equilíbrio perfeito entre abrangência nacional, hospitais de renome e opções com coparticipação com teto.</p>
-            <ul class="plan-features">
-              <li>Opções de abrangência nacional</li>
-              <li>Coparticipação inteligente e protegida</li>
-              <li>Amplo suporte para PME e famílias</li>
-            </ul>
-            <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Linha%20Selecionada%20Amil" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar Condições</a>
-          </article>
-
-          <article class="plan-card plan-card-highlight">
-            <span class="plan-tag">Alto Padrão</span>
-            <h3>Amil Black</h3>
-            <p class="plan-desc">A linha de excelência unificada que substituiu o antigo padrão Amil One, voltada para atendimento de elite e reembolso ágil.</p>
-            <ul class="plan-features">
-              <li>Acesso a Einstein, Sírio-Libanês e HCor</li>
-              <li>Reembolso prioritário em até 24h</li>
-              <li>Assistência médica e remoção internacional</li>
-            </ul>
-            <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20linha%20Amil%20Black" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Consultar Linha Black</a>
-          </article>
-
-          <article class="plan-card">
-            <h3>Amil Dental</h3>
-            <p class="plan-desc">Proteção odontológica completa com mais de 42 mil opções de atendimento em todo o país.</p>
-            <ul class="plan-features">
-              <li>Ampla rede credenciada nacional</li>
-              <li>Cobertura para próteses e ortodontia</li>
-              <li>Contratação ágil para pessoas físicas ou jurídicas</li>
-            </ul>
-            <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Amil%20Dental" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Contratar Dental</a>
-          </article>
-
+    <section class="quote-section section-pad" id="contato">
+      <div class="container quote-grid">
+        <div class="quote-copy">
+          <span class="eyebrow">Vamos conversar?</span>
+          <h2>Conte um pouquinho do que você precisa.</h2>
+          <p>Preencha seus dados e a mensagem vai abrir pronta no WhatsApp. A equipe continua o atendimento por lá.</p>
+          <div class="quote-promise"><span>✓</span><p><b>Sem complicação</b><br>As informações ajudam a preparar uma cotação mais adequada ao seu perfil.</p></div>
+          <div class="quote-whatsapp"><span class="quote-wa-icon" aria-hidden="true">♡</span><div><b>Atendimento pelo WhatsApp</b><small>Você confere a mensagem antes de enviar.</small></div></div>
         </div>
+        <form class="quote-form" id="quoteForm">
+          <div class="quote-form-heading"><span>Pedido de cotação</span><small>Campos com * são obrigatórios</small></div>
+          <div class="quote-fields">
+            <label class="field field-wide">Seu nome *<input name="name" autocomplete="name" type="text" placeholder="Como podemos chamar você?" required></label>
+            <label class="field">E-mail *<input name="email" autocomplete="email" type="email" placeholder="voce@email.com" required></label>
+            <label class="field">WhatsApp com DDD *<input name="phone" autocomplete="tel" type="tel" placeholder="(11) 99999-9999" required></label>
+            <label class="field">Tipo de plano *<select name="plan" required><option value="" selected disabled>Selecione uma opção</option><option>Individual ou familiar</option><option>Empresarial / PME</option><option>Plano odontológico</option><option>Ainda quero orientação</option></select></label>
+            <label class="field">Quantidade de vidas *<input name="lives" type="number" min="1" max="999" step="1" inputmode="numeric" placeholder="Ex.: 3" required></label>
+            <label class="field">Cidade *<input name="city" autocomplete="address-level2" type="text" placeholder="Sua cidade" required></label>
+            <label class="field">Estado (UF) *<select name="state" autocomplete="address-level1" required><option value="" selected disabled>Selecione</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></label>
+          </div>
+          <label class="consent-check"><input name="consent" type="checkbox" required><span>Autorizo o uso desses dados para responder ao meu pedido de cotação pelo WhatsApp.</span></label>
+          <button class="button button-primary quote-submit" type="submit">Continuar no WhatsApp <span aria-hidden="true">↗</span></button>
+          <p class="form-privacy">A conversa abrirá com os dados preenchidos para você revisar. A mensagem só será enviada quando você tocar em enviar no WhatsApp.</p>
+        </form>
       </div>
     </section>
-
-    <!-- 4. DIFERENCIAIS -->
-    <section class="page" id="diferenciais">
-      <div class="container">
-        <h2>Inovação e Vantagens Exclusivas Amil</h2>
-        <div class="diff-grid">
-          <div class="diff-card">
-            <div class="diff-icon" aria-hidden="true">🏥</div>
-            <h3>Amil Resgate Saúde</h3>
-            <p>Sistema pioneiro de transporte aeromédico e terrestre inter-hospitalar com UTI móvel avançada.</p>
-          </div>
-          <div class="diff-card">
-            <div class="diff-icon" aria-hidden="true">📱</div>
-            <h3>Telemedicina 24h</h3>
-            <p>Pronto atendimento virtual imediato em parceria tecnológica com o Hospital Albert Einstein.</p>
-          </div>
-          <div class="diff-card">
-            <div class="diff-icon" aria-hidden="true">🛡️</div>
-            <h3>Coparticipação com Teto</h3>
-            <p>Segurança financeira em exames e internações graças a limites máximos de cobrança pré-fixados.</p>
-          </div>
-          <div class="diff-card">
-            <div class="diff-icon" aria-hidden="true">🌐</div>
-            <h3>Gestão 100% Digital</h3>
-            <p>Carteirinha virtual, autorizações e histórico médico acessíveis direto pelo aplicativo oficial.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. REDE CREDENCIADA & HOSPITAIS -->
-    <section class="page" id="hospitais">
-      <div class="container">
-        <h2>Rede Credenciada de Elite</h2>
-        <p class="section-subtitle">Acesso garantido a mais de 1.700 hospitais e 6.000 laboratórios e centros diagnósticos em todo o Brasil.</p>
-        <div class="hospitais-grid">
-          <div class="hospital-card">
-            <div class="hospital-badge">Referência em Cardiologia</div>
-            <h3>Complexo HCor (São Paulo)</h3>
-            <p>Tradição e tecnologia de ponta em procedimentos de alta complexidade médica.</p>
-          </div>
-          <div class="hospital-card">
-            <div class="hospital-badge">Excelência Global</div>
-            <h3>Hospital Alemão Oswaldo Cruz</h3>
-            <p>Segurança clínica e inovação tecnológica a serviço dos beneficiários.</p>
-          </div>
-          <div class="hospital-card">
-            <div class="hospital-badge">Rede Premium</div>
-            <h3>Hospital 9 de Julho / Samaritano</h3>
-            <p>Infraestrutura hospitalar avançada com atendimento humanizado e ágil.</p>
-          </div>
-          <div class="hospital-card">
-            <div class="hospital-badge">Linha Black / One</div>
-            <h3>Hospital Albert Einstein</h3>
-            <p>Disponível nas categorias de alto padrão para máxima exigência médica.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. DEPOIMENTOS -->
-    <section class="page" id="depoimentos">
-      <div class="container">
-        <h2>O que dizem nossos clientes</h2>
-        <p class="section-subtitle">Histórias reais de quem optou por contar com o suporte especializado e a segurança da Amil.</p>
-        <div class="testimonials-grid">
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Avaliação 5 estrelas">★★★★★</div>
-            <p>"O suporte do corretor facilitou totalmente a contratação do plano PME para minha empresa, reduzindo custos sem perder rede."</p>
-            <span class="testimonial-name">— Carlos Eduardo (Empresário PME)</span>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Avaliação 5 estrelas">★★★★★</div>
-            <p>"A telemedicina 24h funciona de forma excelente e rápida. Consegui orientações médicas sem precisar me deslocar para o pronto-socorro."</p>
-            <span class="testimonial-name">— Mariana Souza (Cliente Amil Saúde)</span>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Avaliação 5 estrelas">★★★★★</div>
-            <p>"A abrangência da rede credenciada nos dá total tranquilidade em viagens e no dia a dia com as crianças."</p>
-            <span class="testimonial-name">— Roberto Mendes (Plano Familiar)</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. DÚVIDAS -->
-    <section class="page" id="duvidas">
-      <div class="container">
-        <h2>Perguntas frequentes sobre a Amil</h2>
-        <div class="faq-list">
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              Quais são as vantagens de contratar como PJ / MEI?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Contratos empresariais (PME) possuem custos significativamente menores em relação aos planos individuais, além de regras facilitadas para inclusão de dependentes e carências reduzidas.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              O que é a coparticipação com teto máximo?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>É uma modalidade onde você paga uma taxa reduzida ao utilizar consultas ou exames, mas com um limite máximo estipulado por procedimento, garantindo total previsibilidade financeira.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              Como funciona a redução de carências?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Se você já possui um plano de saúde anterior (de operadoras regulamentadas pela ANS), é possível aproveitar o tempo de permanência para abater ou zerar os prazos de carência na Amil.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              Qual o papel do corretor autorizado neste site?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Atuamos como consultores oficiais para analisar o seu perfil, cotar nas tabelas vigentes, auditar documentações e garantir um processo de implantação ágil e seguro.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- MODAL DE CAPTAÇÃO DE LEADS -->
-  <div class="lead-modal" id="leadModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose" aria-label="Fechar modal">&times;</button>
-      <div class="modal-header">
-        <h3 id="modalTitle">Fale com um Corretor Autorizado</h3>
-        <p>Preencha os campos abaixo para iniciar um atendimento personalizado via WhatsApp.</p>
-      </div>
-      <form id="leadForm" class="modal-form">
-        <div class="form-group">
-          <label for="leadName">Nome Completo:</label>
-          <input type="text" id="leadName" required placeholder="Digite seu nome">
-        </div>
-        <div class="form-group">
-          <label for="leadPhone">WhatsApp (com DDD):</label>
-          <input type="tel" id="leadPhone" required placeholder="(11) 99999-9999">
-        </div>
-        <div class="form-group">
-          <label for="leadInterest">Linha ou Tipo de Plano:</label>
-          <select id="leadInterest">
-            <option value="Amil Fácil">Amil Fácil (Regional)</option>
-            <option value="Amil Selecionada">Linha Selecionada (Nacional/S380-S750)</option>
-            <option value="Amil Black">Amil Black (Alto Padrão / One)</option>
-            <option value="Amil Dental">Amil Dental</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary modal-submit">Solicitar Cotação no WhatsApp</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="logo logo-light">Amil<span> Planos de Saúde</span></div>
-        <p>Correspondente autorizado independente. Excelência em consultoria e suporte em saúde.</p>
-      </div>
-      <div class="footer-links">
-        <button data-target="planos">Planos</button>
-        <button data-target="diferenciais">Diferenciais</button>
-        <button data-target="hospitais">Rede Credenciada</button>
-        <button data-target="duvidas">Dúvidas</button>
-      </div>
-      <p class="footer-copy">© 2026 Amil. Canal informativo de corretor credenciado, dedicado à comercialização regulamentada de planos de saúde. Imagens meramente ilustrativas.</p>
-    </div>
-  </footer>
-
-  <!-- WHATSAPP FLUTUANTE -->
-  <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20dúvidas%20sobre%20os%20planos%20Amil" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M16 .396C7.16.396.06 7.496.06 16.336c0 2.88.756 5.688 2.192 8.16L.02 32l7.68-2.192a15.84 15.84 0 0 0 8.28 2.264h.008c8.84 0 15.94-7.1 15.94-15.94C31.928 7.496 24.84.396 16 .396zm0 29.16h-.008a13.16 13.16 0 0 1-6.7-1.836l-.48-.284-4.98 1.42 1.44-4.856-.312-.5a13.128 13.128 0 0 1-2.02-7.036c0-7.288 5.932-13.22 13.228-13.22 3.532 0 6.852 1.376 9.352 3.876a13.128 13.128 0 0 1 3.868 9.356c0 7.288-5.936 13.22-13.228 13.22zm7.244-9.912c-.396-.2-2.348-1.16-2.712-1.292-.364-.132-.628-.2-.892.2-.264.396-1.02 1.292-1.252 1.556-.232.264-.46.296-.856.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.972-2.344-2.204-2.74-.232-.396-.024-.612.172-.808.176-.176.396-.46.596-.688.2-.232.264-.396.396-.66.132-.264.068-.496-.032-.696-.1-.2-.892-2.148-1.224-2.94-.32-.772-.648-.664-.892-.676-.232-.012-.496-.012-.76-.012a1.46 1.46 0 0 0-1.056.496c-.364.396-1.392 1.36-1.392 3.312 0 1.952 1.424 3.84 1.624 4.104.2.264 2.804 4.28 6.788 6.004.948.408 1.688.652 2.264.836.952.304 1.816.26 2.5.16.764-.116 2.348-.96 2.68-1.888.332-.928.332-1.72.232-1.888-.096-.164-.36-.264-.756-.464z"/></svg>
-  </a>
-
-  <script src="script.js"></script>
+  <footer class="site-footer"><div class="container footer-main"><a class="brand brand-footer" href="index.html"><span class="brand-word">Amil</span><span>Vendas Online</span></a><p>Informação e orientação para ajudar você a conhecer opções de planos Amil.</p><nav aria-label="Links do rodapé"><a href="planos.html">Planos</a><a href="rede-credenciada.html">Rede credenciada</a><a href="sobre.html">Sobre</a></nav></div><div class="container footer-legal"><p>Amil Vendas Online é um canal independente de divulgação e atendimento comercial. Não é o site institucional da Amil. Produtos, preços, rede, abrangência e condições dependem da disponibilidade e confirmação da operadora para cada contratação.</p><span>© <span data-year></span> Amil Vendas Online</span><span class="site-credit">Desenvolvido por <b>Lucas Reginato Tech</b></span></div></footer>
+  <a class="floating-contact js-whatsapp" href="#contato" aria-label="Fale conosco pelo WhatsApp"><small>Fale com a gente</small></a>
 </body>
 </html>
