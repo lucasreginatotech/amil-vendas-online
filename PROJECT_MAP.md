@@ -19,10 +19,10 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 ## CRM e armazenamento
 
 - `crm.html` e `assets/css/crm.css`: tela privada e visual do painel de leads.
-- `assets/js/crm.js`: login, consulta, edição e exportação dos leads.
+- `assets/js/crm.js`: login, visão geral com gráficos, filtros, edição, exclusão e exportação dos leads.
 - `api/leads.js`: valida e grava cotações enviadas pelo formulário.
 - `api/admin-login.js`: entrada e saída do painel administrativo.
-- `api/crm-leads.js`: consulta e atualização dos leads no painel.
+- `api/crm-leads.js`: consulta, atualização e exclusão autenticada de leads no painel.
 - `lib/http.js`: funções comuns para as respostas das APIs.
 - `lib/session.js`: proteção de sessão do painel.
 - `supabase/leads-schema.sql`: estrutura da tabela de leads no Supabase.

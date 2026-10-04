@@ -1,4 +1,4 @@
-// API privada do CRM: lista os leads e atualiza status/anotações da equipe.
+// API privada do CRM: consulta, atualiza status/anotações e exclui leads.
 const { sendJson, readJson } = require('../lib/http');
 const { hasValidSession } = require('../lib/session');
 
@@ -39,7 +39,27 @@ module.exports = async (req, res) => {
       return sendJson(res, 200, { ok: true });
     }
 
-    res.setHeader('Allow', 'GET, PATCH');
+    if (req.method === 'DELETE') {
+      let input;
+      try { input = readJson(req); } catch { return sendJson(res, 400, { error: 'Invalid request body.' }); }
+      const id = typeof input.id === 'string' ? input.id : '';
+      if (!/^[0-9a-f-]{36}$/i.test(id)) return sendJson(res, 400, { error: 'Lead inválido.' });
+
+      const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?id=eq.${encodeURIComponent(id)}`;
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          apikey: SUPABASE_SECRET_KEY,
+          Prefer: 'return=representation',
+        },
+      });
+      if (!response.ok) return sendJson(res, 502, { error: 'Could not delete this lead.' });
+      const deleted = await response.json();
+      if (!Array.isArray(deleted) || deleted.length === 0) return sendJson(res, 404, { error: 'Lead not found.' });
+      return sendJson(res, 200, { ok: true });
+    }
+
+    res.setHeader('Allow', 'GET, PATCH, DELETE');
     return sendJson(res, 405, { error: 'Method not allowed' });
   } catch {
     return sendJson(res, 502, { error: 'Could not reach the lead database.' });
