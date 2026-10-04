@@ -1,3 +1,4 @@
+// Valida a senha do painel e cria ou encerra a sessão administrativa.
 const crypto = require('node:crypto');
 const { sendJson, readJson } = require('../lib/http');
 const { setSessionCookie, clearSessionCookie } = require('../lib/session');

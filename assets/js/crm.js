@@ -1,3 +1,4 @@
+// Interface do painel privado: login, listagem, atualização e exportação dos leads.
 (() => {
   const loginPanel = document.querySelector('#loginPanel');
   const dashboard = document.querySelector('#dashboard');

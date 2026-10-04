@@ -1,3 +1,4 @@
+// API privada do CRM: lista os leads e atualiza status/anotações da equipe.
 const { sendJson, readJson } = require('../lib/http');
 const { hasValidSession } = require('../lib/session');
 

@@ -1,3 +1,4 @@
+// Recebe cotações públicas, valida os campos e grava leads no Supabase.
 const { sendJson } = require('../lib/http');
 
 module.exports = async (req, res) => {

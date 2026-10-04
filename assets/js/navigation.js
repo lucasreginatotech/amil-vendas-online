@@ -1,3 +1,4 @@
+// Controla a abertura e o fechamento do menu em telas pequenas.
 (() => {
   const button = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#site-nav');
