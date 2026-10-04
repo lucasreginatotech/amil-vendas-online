@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#082e70">
+  <title>CRM | Amil Vendas Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/crm.css">
+  <script defer src="assets/js/crm.js"></script>
+</head>
+<body>
+  <main class="crm-shell">
+    <header class="crm-topbar">
+      <a class="crm-brand" href="index.html"><span>Amil</span> Vendas Online <small>CRM</small></a>
+      <div class="crm-actions" id="crmActions" hidden>
+        <button class="button button-secondary" id="exportCsv" type="button">Baixar planilha Excel</button>
+        <button class="button button-quiet" id="logout" type="button">Sair</button>
+      </div>
+    </header>
+
+    <section class="login-card" id="loginPanel" hidden>
+      <span class="eyebrow">Área da equipe</span>
+      <h1>Acessar seus leads</h1>
+      <p>Entre com a senha administrativa configurada para este painel.</p>
+      <form id="loginForm">
+        <label for="adminPassword">Senha</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-primary" type="submit">Entrar</button>
+      </form>
+      <p class="crm-message" id="loginMessage" role="status"></p>
+    </section>
+
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="dashboard-heading">
+        <div><span class="eyebrow">Painel de atendimento</span><h1>Leads do site</h1><p>Acompanhe pedidos de cotação recebidos pelo formulário.</p></div>
+        <label class="search-box">Buscar<input id="searchLeads" type="search" placeholder="Nome, e-mail, cidade..."></label>
+      </div>
+      <div class="summary-card"><strong id="leadCount">0</strong><span>leads registrados</span><span class="refresh-note" id="lastUpdated"></span></div>
+      <p class="crm-message" id="dashboardMessage" role="status"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lead</th><th>Interesse</th><th>Região</th><th>Recebido</th><th>Status</th><th>Anotações</th><th></th></tr></thead>
+          <tbody id="leadRows"></tbody>
+        </table>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>Nenhum lead encontrado.</p>
+      <p class="export-hint">A planilha é baixada como CSV, que abre no Excel.</p>
+    </section>
+  </main>
+</body>
+</html>

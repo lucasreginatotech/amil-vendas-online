@@ -30,13 +30,20 @@
   const existingIcon = document.querySelector('.js-whatsapp .wa-icon');
   if (existingIcon && submitButton) submitButton.prepend(existingIcon.cloneNode(true));
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!configured) {
       window.alert('O WhatsApp ainda não foi configurado.');
       return;
     }
     const fields = new FormData(form);
+    const status = form.querySelector('[data-submit-status]');
+    const originalButtonText = submitButton.textContent;
+    const whatsappWindow = window.open('about:blank', '_blank');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Registrando seu pedido...';
+    if (status) status.textContent = 'Registrando seu pedido...';
+
     const message = [
       'Olá! Quero receber uma cotação de plano Amil pelo site Amil Vendas Online.',
       '',
@@ -48,6 +55,31 @@
       `Região: ${fields.get('city')} - ${fields.get('state')}`
     ].join('\n');
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fields.get('name'),
+          email: fields.get('email'),
+          phone: fields.get('phone'),
+          plan: fields.get('plan'),
+          lives: fields.get('lives'),
+          city: fields.get('city'),
+          state: fields.get('state'),
+          consent: fields.get('consent') === 'on',
+        }),
+      });
+      if (!response.ok) throw new Error('Lead registration failed');
+      if (whatsappWindow) whatsappWindow.location = url;
+      else window.location.assign(url);
+      if (status) status.textContent = 'Pedido registrado. Continue a conversa no WhatsApp.';
+    } catch {
+      if (whatsappWindow) whatsappWindow.close();
+      if (status) status.textContent = 'Não foi possível registrar seu pedido. Tente novamente em instantes.';
+      window.alert('Não foi possível registrar seu pedido no momento. Tente novamente.');
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
   });
 })();
