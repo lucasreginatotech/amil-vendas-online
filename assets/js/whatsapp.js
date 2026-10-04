@@ -20,6 +20,20 @@
       link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+
+      // Grava o clique como oportunidade anônima, sem atrasar a abertura do WhatsApp.
+      link.addEventListener('click', () => {
+        const label = (link.getAttribute('aria-label') || link.textContent || 'Botão de WhatsApp').trim().replace(/\s+/g, ' ');
+        const sourceDetail = `${window.location.pathname} · ${label}`.slice(0, 160);
+        fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ source: 'whatsapp', source_detail: sourceDetail }),
+          keepalive: true,
+        }).catch(() => {
+          // O clique no WhatsApp continua mesmo se o CRM estiver indisponível.
+        });
+      });
     } else {
       link.addEventListener('click', (event) => {
         event.preventDefault();

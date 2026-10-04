@@ -11,10 +11,16 @@ module.exports = async (req, res) => {
 
   try {
     if (req.method === 'GET') {
-      const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes&order=created_at.desc&limit=1000`;
-      const response = await fetch(url, { headers: { apikey: SUPABASE_SECRET_KEY } });
+      const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes,source,source_detail&order=created_at.desc&limit=1000`;
+      let response = await fetch(url, { headers: { apikey: SUPABASE_SECRET_KEY } });
+      // Keeps the existing CRM readable while an older Supabase schema awaits migration.
+      if (!response.ok) {
+        const legacyUrl = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes&order=created_at.desc&limit=1000`;
+        response = await fetch(legacyUrl, { headers: { apikey: SUPABASE_SECRET_KEY } });
+      }
       if (!response.ok) return sendJson(res, 502, { error: 'Could not load leads.' });
-      return sendJson(res, 200, { leads: await response.json() });
+      const leads = await response.json();
+      return sendJson(res, 200, { leads: leads.map((lead) => ({ source: 'formulario', source_detail: '', ...lead })) });
     }
 
     if (req.method === 'PATCH') {

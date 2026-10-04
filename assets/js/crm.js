@@ -47,6 +47,7 @@
     document.querySelector('#newLeads').textContent = String(count('Novo'));
     document.querySelector('#activeLeads').textContent = String(count('Em contato') + count('Cotação enviada'));
     document.querySelector('#wonLeads').textContent = String(count('Fechado'));
+    document.querySelector('#whatsappClicks').textContent = String(leads.filter((lead) => lead.source === 'whatsapp').length);
     document.querySelector('#pipelineTotal').textContent = `${leads.length} ${leads.length === 1 ? 'lead' : 'leads'}`;
 
     const pipeline = document.querySelector('#pipelineChart');
@@ -80,7 +81,7 @@
   function renderLeads() {
     const query = search.value.trim().toLocaleLowerCase('pt-BR');
     const visible = leads.filter((lead) => {
-      const matchesQuery = [lead.name, lead.email, lead.phone, lead.plan, lead.city, lead.state].join(' ').toLocaleLowerCase('pt-BR').includes(query);
+      const matchesQuery = [lead.name, lead.email, lead.phone, lead.plan, lead.city, lead.state, lead.source, lead.source_detail].join(' ').toLocaleLowerCase('pt-BR').includes(query);
       return matchesQuery && (statusFilter === 'Todos' || lead.status === statusFilter);
     });
 
@@ -96,11 +97,21 @@
       const phoneDigits = String(lead.phone || '').replace(/\D/g, '');
       const whatsappDigits = phoneDigits.length === 10 || phoneDigits.length === 11 ? `55${phoneDigits}` : phoneDigits;
       const whatsappUrl = /^\d{12,15}$/.test(whatsappDigits) ? `https://wa.me/${whatsappDigits}` : '';
-      const initial = String(lead.name || '?').trim().charAt(0).toLocaleUpperCase('pt-BR');
+      const directWhatsapp = lead.source === 'whatsapp';
+      const leadName = lead.name || 'Lead sem nome';
+      const location = lead.city && lead.state ? `${lead.city} - ${lead.state}` : 'Região não informada';
+      const initial = String(leadName).trim().charAt(0).toLocaleUpperCase('pt-BR');
+      const contactInfo = lead.phone || lead.email
+        ? `${lead.phone ? `<a href="tel:${escapeHtml(phoneDigits)}">${escapeHtml(lead.phone)}</a>` : ''}${lead.email ? `<a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a>` : ''}`
+        : '<span class="contact-missing">Sem telefone ou e-mail — clicou para abrir o WhatsApp</span>';
+      const interest = directWhatsapp
+        ? 'O visitante ainda não enviou os dados de contato.'
+        : `${escapeHtml(lead.lives)} ${Number(lead.lives) === 1 ? 'vida' : 'vidas'}`;
       return `<article class="lead-card" data-id="${escapeHtml(lead.id)}">
-        <div class="lead-card-top"><span class="lead-avatar">${escapeHtml(initial)}</span><div class="lead-identity"><strong>${escapeHtml(lead.name)}</strong><span>${escapeHtml(lead.city)} - ${escapeHtml(lead.state)}</span></div><span class="status-badge status-badge-${statuses.indexOf(lead.status)}">${escapeHtml(lead.status)}</span></div>
-        <div class="lead-contact"><a href="tel:${escapeHtml(phoneDigits)}">${escapeHtml(lead.phone)}</a><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></div>
-        <div class="lead-interest"><span>INTERESSE</span><strong>${escapeHtml(lead.plan)}</strong><small>${escapeHtml(lead.lives)} ${Number(lead.lives) === 1 ? 'vida' : 'vidas'}</small></div>
+        <div class="lead-card-top"><span class="lead-avatar">${escapeHtml(initial)}</span><div class="lead-identity"><strong>${escapeHtml(leadName)}</strong><span>${escapeHtml(location)}</span></div><span class="status-badge status-badge-${statuses.indexOf(lead.status)}">${escapeHtml(lead.status)}</span></div>
+        <div class="lead-origin ${directWhatsapp ? 'origin-whatsapp' : 'origin-form'}"><b>${directWhatsapp ? 'Clique direto no WhatsApp' : 'Formulário de cotação'}</b>${lead.source_detail ? `<small>${escapeHtml(lead.source_detail)}</small>` : ''}</div>
+        <div class="lead-contact">${contactInfo}</div>
+        <div class="lead-interest"><span>INTERESSE</span><strong>${escapeHtml(lead.plan || 'Cotação de plano Amil')}</strong><small>${interest}</small></div>
         <div class="lead-card-meta"><span>Recebido ${escapeHtml(formatDate(lead.created_at))}</span><button class="delete-lead" type="button" aria-label="Excluir lead de ${escapeHtml(lead.name)}" title="Excluir lead">Excluir</button></div>
         <details class="lead-notes"><summary>${lead.notes ? 'Ver / editar anotação' : 'Adicionar anotação'}</summary><textarea class="notes-input" maxlength="5000" placeholder="Ex.: chamar amanhã às 10h">${escapeHtml(lead.notes || '')}</textarea></details>
         <div class="lead-card-bottom"><label class="status-field"><span>Etapa do atendimento</span><select class="status-select" aria-label="Etapa do atendimento">${options}</select></label><div class="lead-buttons">${whatsappUrl ? `<a class="contact-lead" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>` : ''}<button class="save-lead" type="button">Salvar</button></div></div>
@@ -134,9 +145,9 @@
 
   // Baixa todos os leads em CSV compatível com Excel em português.
   function exportCsv() {
-    const headers = ['Recebido em', 'Nome', 'E-mail', 'WhatsApp', 'Tipo de plano', 'Vidas', 'Cidade', 'UF', 'Status', 'Anotações'];
+    const headers = ['Recebido em', 'Origem', 'Detalhe da origem', 'Nome', 'E-mail', 'WhatsApp', 'Tipo de plano', 'Vidas', 'Cidade', 'UF', 'Status', 'Anotações'];
     const quote = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
-    const lines = [headers, ...leads.map((lead) => [new Date(lead.created_at).toLocaleString('pt-BR'), lead.name, lead.email, lead.phone, lead.plan, lead.lives, lead.city, lead.state, lead.status, lead.notes])];
+    const lines = [headers, ...leads.map((lead) => [new Date(lead.created_at).toLocaleString('pt-BR'), lead.source === 'whatsapp' ? 'Clique direto no WhatsApp' : 'Formulário de cotação', lead.source_detail, lead.name, lead.email, lead.phone, lead.plan, lead.lives, lead.city, lead.state, lead.status, lead.notes])];
     const csv = '\uFEFF' + lines.map((line) => line.map(quote).join(';')).join('\r\n');
     const link = document.createElement('a');
     const objectUrl = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));

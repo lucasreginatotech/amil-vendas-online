@@ -83,7 +83,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .text-button { padding: 9px 11px; border: 0; border-radius: 9px; background: transparent; color: var(--blue); font-size: 12px; font-weight: 700; cursor: pointer; }
 
 /* Cartões KPI e gráficos do resumo. */
-.stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
+.stats-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 13px; }
 .stat-card { position: relative; display: grid; min-height: 142px; align-content: start; gap: 4px; padding: 17px; overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
 .stat-icon { display: grid; width: 31px; height: 31px; place-items: center; margin-bottom: 6px; border-radius: 10px; background: #edf4ff; color: var(--blue); font-size: 16px; font-weight: 700; }
 .stat-label { color: var(--muted); font-size: 11px; font-weight: 600; }
@@ -92,6 +92,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .stat-new .stat-icon { background: #fff4df; color: #c98719; }
 .stat-active .stat-icon { background: #eaf8f3; color: #13865b; }
 .stat-won .stat-icon { background: #eef0ff; color: #6253c8; }
+.stat-clicks .stat-icon { background: #eaf8f1; color: #16865b; }
 .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 15px; }
 .chart-card { min-width: 0; min-height: 255px; padding: 19px 20px 17px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
 .chart-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 17px; }
@@ -139,6 +140,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .lead-contact { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 12px 0; padding: 10px 0; border-top: 1px solid #f0f2f6; border-bottom: 1px solid #f0f2f6; }
 .lead-contact a { color: #64738a; font-size: 10px; text-decoration: none; overflow-wrap: anywhere; }
 .lead-contact a:hover { color: var(--blue); }
+.lead-origin { display: grid; gap: 2px; margin-top: 11px; padding: 8px 10px; border-radius: 9px; background: #f2f6fc; color: #536983; }
+.lead-origin b { font-size: 9px; }
+.lead-origin small { color: #71809a; font-size: 8px; overflow-wrap: anywhere; }
+.lead-origin.origin-whatsapp { background: #eaf8f1; color: #14734f; }
+.lead-origin.origin-whatsapp small { color: #4f826c; }
+.contact-missing { color: #9a6c24; font-size: 9px; }
 .lead-interest { display: flex; align-items: baseline; gap: 7px; }
 .lead-interest>span { color: #929db0; font-size: 8px; font-weight: 800; letter-spacing: .09em; }
 .lead-interest strong { color: var(--ink); font-size: 11px; }
@@ -228,6 +235,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .lead-identity span { font-size: 9px; }
   .status-badge { padding: 5px 7px; font-size: 8px; }
   .lead-contact a { font-size: 10px; }
+  .contact-missing { font-size: 9px; }
   .status-field { font-size: 8px; }
   .status-select { height: 39px; font-size: 10px; }
   .contact-lead, .save-lead { min-height: 39px; padding: 0 10px; font-size: 10px; }
