@@ -16,7 +16,7 @@
     link.prepend(icon);
 
     if (configured) {
-      const message = link.dataset.whatsappMessage || 'Olá! Acessei o site Amil Vendas Online e gostaria de receber informações sobre planos Amil.';
+      const message = 'Olá! Acessei o site Amil Vendas Online e gostaria de receber informações sobre planos Amil.';
       link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
@@ -73,12 +73,6 @@
     }
 
     const fields = new FormData(form);
-    const phoneDigits = String(fields.get('phone') || '').replace(/\D/g, '');
-    if (!/^\d{10,11}$/.test(phoneDigits)) {
-      form.elements.phone.setCustomValidity('Informe um telefone com DDD e 10 ou 11 dígitos.');
-      form.elements.phone.reportValidity();
-      return;
-    }
     const message = [
       'Olá! Quero receber uma cotação de plano Amil pelo site Amil Vendas Online.',
       '',
@@ -87,10 +81,7 @@
       `WhatsApp: ${fields.get('phone')}`,
       `Tipo de plano: ${fields.get('plan')}`,
       `Quantidade de vidas: ${fields.get('lives')}`,
-      `Região: ${fields.get('city')} - ${fields.get('state')}`,
-      ...(form.dataset.profile === 'mei' ? ['Perfil: MEI — solicitar análise de elegibilidade'] : []),
-      ...(fields.get('priority') ? [`Minha prioridade: ${fields.get('priority')}`] : []),
-      ...(fields.get('provider') ? [`Prestador que gostaria de confirmar: ${String(fields.get('provider')).trim().slice(0, 160)}`] : []),
+      `Região: ${fields.get('city')} - ${fields.get('state')}`
     ].join('\n');
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -108,9 +99,9 @@
 
     const originalButtonContents = [...submitButton.childNodes].map((node) => node.cloneNode(true));
     submitButton.disabled = true;
-    submitButton.textContent = 'Preparando seu atendimento...';
+    submitButton.textContent = 'Registrando cotação...';
     showStatus(
-      whatsappOpened ? 'Mensagem pronta no WhatsApp. Registrando seu pedido...' : 'Mensagem pronta. Se o WhatsApp não abrir, use o link:',
+      whatsappOpened ? 'WhatsApp aberto. Salvando seu pedido no CRM...' : 'Seu pedido está sendo salvo. Se o WhatsApp não abrir, use o link:',
       whatsappUrl,
     );
 
@@ -130,20 +121,19 @@
           city: fields.get('city'),
           state: fields.get('state'),
           consent: fields.get('consent') === 'on',
-          source_detail: form.dataset.profile === 'mei' ? 'Formulário de cotação · MEI' : 'Formulário de cotação',
         }),
         signal: controller.signal,
         keepalive: true,
       });
       if (!response.ok) throw new Error('Lead registration failed');
-      showStatus('Pedido recebido. Revise e envie sua mensagem no WhatsApp para continuar.', whatsappUrl);
+      showStatus('Pedido registrado no CRM. Continue a conversa no WhatsApp.', whatsappUrl);
     } catch {
-      showStatus('Não foi possível registrar o formulário. Você pode continuar pelo WhatsApp com a mensagem preparada.', whatsappUrl);
+      showStatus('O WhatsApp foi aberto, mas não consegui confirmar o registro no CRM. Tente novamente pelo formulário.', whatsappUrl);
+      window.alert('O WhatsApp foi aberto, mas não foi possível confirmar o registro da cotação. Verifique sua conexão e tente novamente pelo formulário.');
     } finally {
       window.clearTimeout(timeout);
       submitButton.disabled = false;
       submitButton.replaceChildren(...originalButtonContents.map((node) => node.cloneNode(true)));
     }
   });
-  form.elements.phone.addEventListener('input', () => form.elements.phone.setCustomValidity(''));
 })();
