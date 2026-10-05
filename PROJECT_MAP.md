@@ -21,8 +21,9 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 - `assets/css/responsive.css`: adaptações para celular e tablet.
 - `assets/css/premium.css`: refinamentos da identidade visual e estilos da consulta da rede.
 - `assets/css/conversion.css`: perfis comerciais, comparação de propostas e jornada de cotação.
+- `assets/css/mobile.css`: ajustes finais para telas pequenas, textos, campos e botões fixos.
 
-Os estilos são importados nesta ordem: base, layout, componentes, páginas, responsivo, premium e conversão. A ordem define a prioridade das regras; preserve-a ao fazer ajustes.
+Os estilos são importados nesta ordem: base, layout, componentes, páginas, responsivo, premium, conversão e mobile. A ordem define a prioridade das regras; preserve-a ao fazer ajustes.
 
 ## Comparação e documentação
 

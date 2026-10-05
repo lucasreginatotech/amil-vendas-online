@@ -1,0 +1,513 @@
+/* Ajustes finais para tablet, celular e ampliação de texto. */
+@media (max-width: 820px) {
+  .hero-grid,
+  .quote-grid,
+  .feature-grid,
+  .split-callout,
+  .about-grid,
+  .documents-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .hero-copy,
+  .hero-lead {
+    max-width: 100%;
+  }
+
+  .hero-art {
+    width: min(100%, 520px);
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .hero-copy h1 {
+    max-width: 18ch;
+  }
+
+  .site-nav {
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 680px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  /* Permite encolher colunas sem cortar textos ou campos. */
+  main,
+  .container,
+  .container > *,
+  .hero-grid > *,
+  .quote-grid > *,
+  .profile-card,
+  .benefit-card,
+  .detail-plan,
+  .field,
+  .field input,
+  .field select {
+    min-width: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  .button,
+  .source-badge,
+  .provider-card,
+  .footer-legal {
+    overflow-wrap: anywhere;
+  }
+
+  .hero-copy h1,
+  .page-hero h1,
+  .network-intro h1 {
+    font-size: clamp(2rem, 7.6vw, 2.625rem);
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+    max-width: 100%;
+    margin-bottom: 18px;
+  }
+
+  h2,
+  .section-heading h2,
+  .commercial-intro h2,
+  .quote-copy h2,
+  .feature-grid h2,
+  .closing-inner h2 {
+    font-size: clamp(1.625rem, 6.5vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .profile-card h3,
+  .benefit-card h3,
+  .detail-plan h3,
+  .proposal-top h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .eyebrow {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    letter-spacing: 0.07em;
+    margin-bottom: 12px;
+  }
+
+  .section-pad {
+    padding-block: 42px;
+  }
+
+  .hero,
+  .page-hero {
+    padding-block: 30px 36px;
+  }
+
+  .hero-grid,
+  .quote-grid,
+  .feature-grid,
+  .split-callout,
+  .about-grid,
+  .documents-grid {
+    gap: 24px;
+  }
+
+  .section-heading,
+  .commercial-intro {
+    margin-bottom: 24px;
+  }
+
+  .hero-lead,
+  .section-heading > p,
+  .commercial-intro p,
+  .profile-card p,
+  .benefit-card p,
+  .detail-plan p,
+  .documents-grid li p,
+  .feature-points p,
+  .journey-grid p,
+  .faq-list p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero-kicker,
+  .trust-row,
+  .profile-card ul,
+  .detail-plan ul,
+  .detail-plan small,
+  .field,
+  .field small,
+  .form-privacy,
+  .consent-check,
+  .source-reference,
+  .commercial-note,
+  .source-badge,
+  .network-status {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .site-header {
+    height: 64px;
+  }
+
+  .header-inner {
+    gap: 12px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-word {
+    font-size: 1.75rem;
+  }
+
+  .brand > span:last-child {
+    padding-left: 10px;
+    font-size: 0.8125rem;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .site-nav {
+    max-height: calc(100dvh - 64px);
+  }
+
+  .site-nav a {
+    min-height: 48px;
+    font-size: 1rem;
+  }
+
+  .button,
+  .hero-actions .button,
+  .detail-plan .button,
+  .closing-inner .button,
+  #networkHelp,
+  #networkMore {
+    min-height: 48px;
+    height: auto;
+    padding: 12px 16px;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .button .wa-icon,
+  .button > span {
+    flex-shrink: 0;
+  }
+
+  .hero-actions,
+  .profile-grid,
+  .benefit-grid,
+  .detail-plans {
+    gap: 16px;
+  }
+
+  .hero-art {
+    width: 100%;
+    height: clamp(230px, 66vw, 320px);
+    margin: 0;
+  }
+
+  .hero-art::before,
+  .hero-caption {
+    display: none;
+  }
+
+  .hero-photo {
+    border-radius: 56px 14px 14px 14px;
+  }
+
+  .art-card {
+    max-width: calc(100% - 24px);
+    padding: 10px 12px;
+  }
+
+  .art-card-top {
+    top: 14px;
+    left: 12px;
+  }
+
+  .art-card-bottom {
+    bottom: 14px;
+    right: 12px;
+  }
+
+  .art-card b {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .art-card small {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .profile-card,
+  .benefit-card,
+  .detail-plan,
+  .quote-form,
+  .network-search,
+  .network-note {
+    padding: 20px;
+  }
+
+  .large-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .profile-card > a,
+  .text-link,
+  .reset-button {
+    min-height: 44px;
+    padding-block: 10px;
+    line-height: 1.5;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    min-height: 50px;
+    font-size: 1rem;
+  }
+
+  .quote-fields {
+    gap: 16px;
+  }
+
+  .quote-form-heading small {
+    font-size: 0.875rem;
+  }
+
+  .quote-optional summary,
+  .faq-list summary {
+    min-height: 48px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .consent-check input {
+    width: 22px;
+    height: 22px;
+  }
+
+  .proposal-list li {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.9375rem;
+  }
+
+  .proposal-list span {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .plan-jump-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .plan-jump-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  /* A comparação vira uma sequência de critérios legíveis no celular. */
+  .compare-table-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .decision-table,
+  .decision-table caption,
+  .decision-table tbody,
+  .decision-table tr,
+  .decision-table th,
+  .decision-table td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .decision-table caption {
+    padding: 0 0 16px;
+  }
+
+  .decision-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .decision-table tbody tr {
+    margin-bottom: 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
+    overflow: hidden;
+  }
+
+  .decision-table tbody th {
+    padding: 16px 18px;
+    border: 0;
+    background: var(--sky);
+    font-size: 1rem;
+  }
+
+  .decision-table td {
+    padding: 16px 18px;
+    font-size: 0.9375rem;
+  }
+
+  .decision-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 6px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .network-filter-actions .button,
+  #networkHelp,
+  #networkMore {
+    width: 100%;
+  }
+
+  .network-provenance,
+  .network-disclosure,
+  .footer-legal p,
+  .footer-legal span {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .footer-main nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .mobile-quote-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-quote-bar .button {
+    min-height: 48px;
+    max-width: 160px;
+    padding-inline: 14px;
+  }
+
+  .floating-contact {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+
+  .has-quote-bar .floating-contact {
+    bottom: calc(var(--mobile-quote-bar-height, 80px) + 12px);
+  }
+
+  .has-quote-bar .site-footer {
+    padding-bottom: calc(var(--mobile-quote-bar-height, 80px) + 32px);
+  }
+
+  .has-quote-bar:has(.mobile-quote-bar.is-hidden) .floating-contact {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+
+  body:has(input:focus, select:focus, textarea:focus) .floating-contact,
+  body:has(input:focus, select:focus, textarea:focus) .mobile-quote-bar {
+    display: none;
+  }
+
+  .comparison-grid {
+    padding: 16px;
+  }
+
+  .comparison-grid iframe {
+    height: 65svh;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .profile-card,
+  .benefit-card,
+  .detail-plan,
+  .quote-form,
+  .network-search {
+    padding: 16px;
+  }
+
+  .hero-copy h1,
+  .page-hero h1,
+  .network-intro h1 {
+    font-size: 2rem;
+  }
+
+  .mobile-quote-bar small {
+    display: none;
+  }
+
+  .mobile-quote-bar .button {
+    padding-inline: 12px;
+    max-width: 145px;
+  }
+}
+
+@media (max-width: 820px) and (orientation: landscape) and (max-height: 500px) {
+  .site-header {
+    position: relative;
+  }
+
+  .mobile-quote-bar {
+    display: none;
+  }
+
+  .has-quote-bar .floating-contact {
+    bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+}

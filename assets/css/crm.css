@@ -1265,3 +1265,137 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Legibilidade e áreas de toque do painel em celulares. */
+@media (max-width: 600px) {
+  body {
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  .crm-shell,
+  .crm-shell > *,
+  .lead-card,
+  .stat-card {
+    min-width: 0;
+  }
+
+  .crm-topbar {
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-block: 12px;
+  }
+
+  .brand-copy b,
+  .lead-identity strong {
+    font-size: 16px;
+  }
+
+  .brand-copy small,
+  .today-card span,
+  .today-card small,
+  .stat-card small,
+  .chart-total,
+  .week-value,
+  .week-column small,
+  .lead-origin small,
+  .lead-card-meta,
+  .mobile-nav-button,
+  .mobile-nav-button b {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .welcome-row p,
+  .section-heading p,
+  .stat-label,
+  .pipeline-label,
+  .pipeline-label b,
+  .tip-card strong,
+  .tip-card p,
+  .lead-identity span,
+  .status-badge,
+  .lead-contact a,
+  .contact-missing,
+  .status-field,
+  .lead-origin b,
+  .lead-interest > span,
+  .lead-interest strong,
+  .lead-interest small,
+  .lead-notes summary,
+  .empty-state p,
+  .export-hint,
+  .login-card > p,
+  .back-to-site {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .search-box input,
+  .status-select,
+  .notes-input,
+  .login-card input {
+    font-size: 16px;
+  }
+
+  .search-box,
+  .status-select,
+  .login-card input {
+    min-height: 48px;
+    height: auto;
+  }
+
+  .filter-chip,
+  .contact-lead,
+  .save-lead,
+  .delete-lead,
+  .text-button,
+  .icon-button {
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .filter-chip {
+    padding: 10px 14px;
+  }
+
+  .filter-chip b {
+    font-size: 14px;
+  }
+
+  .lead-card-top,
+  .lead-card-meta,
+  .lead-contact {
+    flex-wrap: wrap;
+  }
+
+  .lead-identity strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .lead-contact a,
+  .lead-origin small {
+    overflow-wrap: anywhere;
+  }
+
+  .lead-card-bottom {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .lead-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-nav {
+    height: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .crm-shell {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}

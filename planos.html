@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="theme-color" content="#102f54" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Compare modalidades de planos Amil para família, empresa, PME, MEI e odontológico. Entenda rede, custos e condições e solicite uma cotação personalizada."
@@ -205,71 +205,87 @@
             class="compare-table-wrap"
             tabindex="0"
             role="region"
-            aria-label="Tabela de critérios de comparação, deslize para ver todas as colunas"
+            aria-label="Critérios para comparar propostas de planos de saúde"
           >
-            <table class="decision-table">
+            <table class="decision-table" role="table">
               <caption>
                 Checklist de comparação de planos de saúde
               </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Critério</th>
-                  <th scope="col">Como avaliar</th>
-                  <th scope="col">O que perguntar à equipe</th>
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th role="columnheader" scope="col">Critério</th>
+                  <th role="columnheader" scope="col">Como avaliar</th>
+                  <th role="columnheader" scope="col">O que perguntar à equipe</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Rede de atendimento</th>
-                  <td>
+              <tbody role="rowgroup">
+                <tr role="row">
+                  <th role="rowheader" scope="row">Rede de atendimento</th>
+                  <td role="cell" data-label="Como avaliar">
                     Confira os prestadores do produto e a unidade exata onde pretende utilizar o
                     atendimento.
                   </td>
-                  <td>Meu hospital está neste produto? Quais serviços a unidade atende?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Meu hospital está neste produto? Quais serviços a unidade atende?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Abrangência</th>
-                  <td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Abrangência</th>
+                  <td role="cell" data-label="Como avaliar">
                     Identifique os municípios e a área geográfica previstos para o atendimento.
                   </td>
-                  <td>Quais cidades fazem parte da abrangência do meu plano?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Quais cidades fazem parte da abrangência do meu plano?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Acomodação</th>
-                  <td>Compare a acomodação prevista em internações, conforme a proposta.</td>
-                  <td>Este produto prevê enfermaria ou apartamento? Quais são as condições?</td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Acomodação</th>
+                  <td role="cell" data-label="Como avaliar">
+                    Compare a acomodação prevista em internações, conforme a proposta.
+                  </td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Este produto prevê enfermaria ou apartamento? Quais são as condições?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Coparticipação</th>
-                  <td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Coparticipação</th>
+                  <td role="cell" data-label="Como avaliar">
                     Verifique se há cobrança por utilização além da mensalidade e consulte a tabela
                     do produto.
                   </td>
-                  <td>Quais atendimentos geram cobrança e como ela é calculada?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Quais atendimentos geram cobrança e como ela é calculada?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Carências e início</th>
-                  <td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Carências e início</th>
+                  <td role="cell" data-label="Como avaliar">
                     Leia os prazos aplicáveis e a data de vigência. Uma cotação não significa início
                     imediato da cobertura.
                   </td>
-                  <td>Quando a cobertura começa e quais prazos constam no contrato?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Quando a cobertura começa e quais prazos constam no contrato?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Mensalidade e reajustes</th>
-                  <td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Mensalidade e reajustes</th>
+                  <td role="cell" data-label="Como avaliar">
                     Confira o valor, a validade da proposta e as regras contratuais de alteração do
                     preço.
                   </td>
-                  <td>Qual o valor para este grupo e quais regras de reajuste se aplicam?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Qual o valor para este grupo e quais regras de reajuste se aplicam?
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">Tipo de contratação</th>
-                  <td>
+                <tr role="row">
+                  <th role="rowheader" scope="row">Tipo de contratação</th>
+                  <td role="cell" data-label="Como avaliar">
                     Identifique a modalidade e os documentos necessários para comprovar
                     elegibilidade.
                   </td>
-                  <td>Quem pode participar e quais vínculos devem ser comprovados?</td>
+                  <td role="cell" data-label="O que perguntar à equipe">
+                    Quem pode participar e quais vínculos devem ser comprovados?
+                  </td>
                 </tr>
               </tbody>
             </table>
