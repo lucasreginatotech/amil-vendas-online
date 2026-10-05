@@ -1,36 +1,34 @@
-# Rede credenciada dentro do site
+# Consulta da rede credenciada
 
-A interface usa `assets/data/network.json`. Nenhum prestador é fictício ou copiado de listas antigas. A base inicial fica vazia porque o acesso ao guia oficial retornou 403 e não foi fornecido um arquivo atual da operadora. Não há integração ao vivo implementada: a pesquisa é local sobre uma exportação oficial verificada pelo responsável do site.
+A página rede-credenciada.html pesquisa o material fornecido pelo responsável pelo site. A consulta começa por cidade e nome do prestador, sem exigir um plano.
 
-Para ativar, obtenha uma exportação autorizada e atualizada da Amil com a relação por produto. Converta para o formato abaixo, preservando os nomes exatos dos produtos e unidades. `updatedAt` é a data em que os dados foram conferidos na fonte, não apenas a data de upload. `source.url` deve apontar ao documento exato em domínio oficial da Amil. Uma URL oficial sozinha não prova a origem dos registros: o responsável deve confrontar o conteúdo com o material.
+## Fonte cadastrada
 
-```json
-{
-  "status": "ready",
-  "source": {
-    "label": "Nome do documento oficial",
-    "url": "https://galeria.amil.com.br/CAMINHO-REAL-DO-DOCUMENTO"
-  },
-  "updatedAt": "DATA-REAL-DA-CONFERENCIA-EM-ISO-8601",
-  "providers": [
-    {
-      "name": "NOME EXATO DA UNIDADE NA FONTE",
-      "type": "Hospital",
-      "city": "MUNICIPIO DA UNIDADE",
-      "state": "SP",
-      "address": "ENDERECO CONFIRMADO (opcional)",
-      "phone": "TELEFONE CONFIRMADO (opcional)",
-      "plans": ["NOME EXATO DO PRODUTO"],
-      "specialties": ["SERVICO CONFIRMADO"]
-    }
-  ]
-}
-```
+- Gravação: Gravando 2026-10-05 144942.mp4, recebida do responsável pelo site.
+- Origem visível: Painel do Corretor, tabela de produtos Amil em São Paulo.
+- Data do material: 05/10/2026. A data da gravação não comprova a atualização da rede pela operadora.
+- SHA-256 do vídeo: 03db61538a344f79c2b35aa8788cb8eee319477b5fafd98fc9cecda7dd592029a.
+- Índice: 446 registros em 13 agrupamentos da fonte, com 120 cidades identificadas.
+- 128 registros não têm cidade da unidade identificada. Ao filtrar uma cidade, são exibidos somente quando o visitante marca a opção correspondente. Sem cidade selecionada, é possível pesquisá-los pelo nome.
 
-Os textos acima são marcadores de documentação, não registros utilizáveis. Não os publique como dados. Tipos permitidos: Hospital, Clínica, Laboratório, Profissional. Uma unidade deve ser um registro; não atribua a rede de um plano a outro por semelhança de nome. Não inclua CPF, carteirinha ou dados de beneficiários.
+O material é uma referência de terceiros, sem integração em tempo real com a Amil. A interface não o apresenta como base oficial verificada. Não foram acrescentados endereços, telefones, especialidades, coordenadas ou distâncias.
 
-O site bloqueia a exibição se faltar origem, houver formato inválido ou a conferência tiver mais de 30 dias. Exibe a data e a fonte quando a consulta está disponível. Os filtros, a busca sem distinção de acentos, os contatos e a paginação funcionam depois da inclusão da base. Em caso de indisponibilidade, oferece uma mensagem de WhatsApp com os critérios informados, sem afirmar que existe ou inexiste cobertura.
+## Organização e fidelidade
 
-Não há iframe nem proxy para contornar bloqueios da operadora. Uma futura API oficial requer documentação e autorização antes de substituir a exportação. Credenciais devem ficar exclusivamente no servidor.
+assets/data/network.json contém o índice pesquisável. O nome mantém a identificação do prestador do material, com normalização de espaçamento e cidades escritas por extenso quando identificadas na própria tabela. A região original fica em region. cityBasis distingue cidade no nome de agrupamento regional da capital. SP sozinho no nome de um laboratório não permite atribuir cidade. Ophthal H Especializado Unid SBC na seção Zona Leste fica sem cidade: a seção e o nome não permitem confirmar a localização dessa unidade.
 
-Sirva o projeto por HTTP para a busca funcionar; `file://` pode impedir a leitura do JSON. A comparação fica em `comparar.html`, com a versão original preservada em `antes/`. A cópia original é apenas visual: seus links de páginas internas não foram duplicados.
+Cada registro tem evidence com o instante do quadro e as coordenadas da linha. Os arquivos em assets/data/network-source/ preservam o cabeçalho dos produtos e a linha original em imagens separadas para evitar downloads repetidos. O cabeçalho foi obtido no mesmo nível de zoom; somente seu título regional foi removido, pois a região correta é exibida no cartão. As células de produtos e atendimentos permanecem como na gravação. A legenda é apresentada em texto no diálogo. Nenhum traço foi convertido em uma promessa de exclusão de cobertura, e nenhuma presença na tabela foi convertida em cobertura para todos os produtos.
+
+O vídeo completo, dados do navegador, contatos de terceiros, avisos de acesso e ferramentas temporárias não são publicados. Os recortes mostram somente a tabela.
+
+## Busca e manutenção
+
+assets/js/network-data.js valida o contrato e aplica filtros sem acentos. assets/js/network.js monta os cartões, a paginação, os atalhos de cidade e o diálogo da fonte. assets/css/network.css adapta a consulta e o diálogo para celular. As imagens dos detalhes são carregadas somente ao abrir o prestador.
+
+As sugestões de outras cidades usam o mesmo agrupamento da fonte. Elas não representam distância ou proximidade geográfica; principalmente Interior reúne municípios muito distantes.
+
+Para atualizar o material, conferir os nomes e municípios contra a nova fonte, substituir os recortes e atualizar recording, recordedAt e sha256. Não trocar apenas a data da referência. Se houver arquivo estruturado confiável no futuro, registrar sua origem e conservar as diferenças por produto, unidade e serviço.
+
+## Verificação
+
+Com Node.js instalado: node scripts/check-network.mjs. O teste verifica o contrato, a existência dos 446 recortes, a busca sem acentos, os filtros e a exclusão de prestadores sem cidade quando essa opção não está selecionada. Os testes automatizados não substituem a conferência das linhas contra a fonte nem a confirmação atual da operadora.

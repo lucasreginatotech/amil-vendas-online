@@ -1,6 +1,7 @@
 # Dependências e arquivos temporários.
 node_modules/
 .formatter-temp/
+.network-extraction/
 formatter-metadata.tmp.json
 *.log
 

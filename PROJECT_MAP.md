@@ -10,8 +10,11 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 - `assets/js/navigation.js`: menu para celular.
 - `assets/js/main.js`: pequenas funções comuns, como o ano do rodapé.
 - `assets/js/conversion.js`: seleção do perfil, preenchimento da cotação e botão fixo no celular.
-- `assets/js/network.js`: pesquisa local na base da rede, validação da fonte e estados de indisponibilidade.
-- `assets/data/network.json`: base da rede; está vazia enquanto aguarda uma fonte oficial atualizada.
+- `assets/js/network.js`: consulta por cidade, cartões, paginação e detalhes da gravação.
+- `assets/js/network-data.js`: validação e filtros do catálogo.
+- `assets/data/network-source/`: recortes da tabela, carregados ao abrir os detalhes.
+- `scripts/check-network.mjs`: verifica o catálogo e os filtros.
+- `assets/data/network.json`: índice dos 446 registros do material fornecido, com origem e recortes rastreáveis.
 - `assets/favicon.svg`: ícone do site.
 - `assets/css/main.css`: importa os estilos do site.
 - `assets/css/base.css`: cores, fontes e regras globais.
@@ -21,15 +24,16 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 - `assets/css/responsive.css`: adaptações para celular e tablet.
 - `assets/css/premium.css`: refinamentos da identidade visual e estilos da consulta da rede.
 - `assets/css/conversion.css`: perfis comerciais, comparação de propostas e jornada de cotação.
+- `assets/css/network.css`: consulta por cidade e diálogo da fonte no desktop e celular.
 - `assets/css/mobile.css`: ajustes finais para telas pequenas, textos, campos e botões fixos.
 
-Os estilos são importados nesta ordem: base, layout, componentes, páginas, responsivo, premium, conversão e mobile. A ordem define a prioridade das regras; preserve-a ao fazer ajustes.
+Os estilos são importados nesta ordem: base, layout, componentes, páginas, responsivo, premium, conversão, mobile e consulta da rede. A ordem define a prioridade das regras; preserve-a ao fazer ajustes.
 
 ## Comparação e documentação
 
 - `comparar.html`: mostra a página inicial original e a atual lado a lado.
 - `antes/`: cópia histórica dos arquivos públicos; não editar ao atualizar o site atual.
-- `REDE_SETUP.md`: formato e critérios para cadastrar uma base oficial da rede.
+- `REDE_SETUP.md`: origem da gravação, critérios de fidelidade e manutenção da consulta.
 - `.editorconfig`: espaçamento, codificação e finais de linha usados pelo editor.
 - `.prettierrc.json`: padrão de formatação de HTML, CSS e JavaScript.
 - `.prettierignore`: exclui a cópia histórica e arquivos temporários da formatação.

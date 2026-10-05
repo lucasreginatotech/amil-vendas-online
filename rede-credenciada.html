@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="Peça a confirmação da rede credenciada Amil: hospitais, clínicas e laboratórios conforme o plano e a cidade. Consulte disponibilidade com a equipe."
+      content="Pesquise hospitais e laboratórios por cidade no material Amil de São Paulo. Conheça os prestadores e peça ajuda para escolher seu plano."
     />
     <title>Rede credenciada Amil: hospitais | Amil Vendas Online</title>
     <link rel="canonical" href="https://amil-vendas-online.vercel.app/rede-credenciada.html" />
@@ -14,7 +14,10 @@
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Rede credenciada Amil: hospitais | Amil Vendas Online" />
-    <meta property="og:description" content="Peça a confirmação da rede credenciada Amil: hospitais, clínicas e laboratórios conforme o plano e a cidade. Consulte disponibilidade com a equipe." />
+    <meta
+      property="og:description"
+      content="Pesquise hospitais e laboratórios por cidade no material Amil de São Paulo. Conheça os prestadores e peça ajuda para escolher seu plano."
+    />
     <meta property="og:url" content="https://amil-vendas-online.vercel.app/rede-credenciada.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +33,7 @@
     <script defer src="assets/js/navigation.js"></script>
     <script defer src="assets/js/whatsapp.js"></script>
     <script defer src="assets/js/main.js"></script>
-    <script defer src="assets/js/network.js"></script>
+    <script type="module" src="assets/js/network.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -66,8 +69,8 @@
           <span class="eyebrow">Rede de atendimento Amil</span>
           <h1>O cuidado que você procura. <em>Na sua região.</em></h1>
           <p>
-            Informe a cidade e o prestador que deseja consultar. A disponibilidade deve ser
-            confirmada para o produto e a unidade escolhidos.
+            Pesquise sua cidade e descubra os prestadores listados no material de São Paulo. Você
+            não precisa saber o nome do plano: nossa equipe ajuda a encontrar a opção adequada.
           </p>
         </div>
       </section>
@@ -75,41 +78,83 @@
         <div class="container">
           <form class="network-search" id="networkForm">
             <div class="network-search-heading">
-              <h2>Encontre hospitais, clínicas e laboratórios</h2>
-              <span class="source-badge" id="networkSourceBadge">Verificando a fonte…</span>
+              <h2>Comece pela sua cidade</h2>
+              <span class="source-badge" id="networkSourceBadge">Carregando o material…</span>
             </div>
+            <p id="networkStats" class="network-stats">
+              Hospitais, unidades de atendimento e laboratórios em São Paulo.
+            </p>
             <div class="network-filters">
               <label class="field"
-                >Estado<select name="state" data-requires-source disabled>
-                  <option value="">Aguardando base oficial</option>
-                </select></label
-              ><label class="field"
-                >Cidade<input
+                >Em qual cidade você procura?
+                <input
                   name="city"
+                  list="networkCities"
                   autocomplete="address-level2"
-                  placeholder="Ex.: São Paulo"
-                  maxlength="100" /></label
-              ><label class="field"
-                >Produto / plano<select name="plan" data-requires-source disabled>
-                  <option value="">Aguardando base oficial</option>
-                </select></label
-              ><label class="field search-field"
-                >Nome do prestador ou especialidade<input
+                  placeholder="Digite a cidade. Ex.: Campinas"
+                  maxlength="100"
+                  aria-describedby="networkCityHelp"
+                />
+                <datalist id="networkCities"></datalist>
+              </label>
+              <label class="field"
+                >Nome do prestador <span class="field-optional">(opcional)</span>
+                <input
                   name="query"
                   type="search"
-                  placeholder="Ex.: nome do hospital ou cardiologia"
-                  maxlength="150" /></label
-              ><label class="field"
-                >Tipo de atendimento<select name="type" data-requires-source disabled>
-                  <option value="">Aguardando base oficial</option>
-                </select></label
-              >
+                  placeholder="Ex.: São Camilo, Fleury…"
+                  maxlength="150"
+                />
+              </label>
+              <label class="field"
+                >O que você procura?
+                <select name="type" data-requires-source disabled>
+                  <option value="">Todos os prestadores</option>
+                  <option value="Hospital ou unidade de atendimento">
+                    Hospitais e unidades de atendimento
+                  </option>
+                  <option value="Laboratório">Laboratórios</option>
+                </select>
+              </label>
             </div>
+            <p class="network-city-help" id="networkCityHelp">
+              Cidades e regiões identificadas no material recebido. Sem endereços ou distâncias
+              presumidos.
+            </p>
+            <div class="network-city-chips" aria-label="Atalhos de cidades">
+              <button type="button" class="network-city-chip" data-network-city="São Paulo">
+                São Paulo
+              </button>
+              <button type="button" class="network-city-chip" data-network-city="Campinas">
+                Campinas
+              </button>
+              <button
+                type="button"
+                class="network-city-chip"
+                data-network-city="São Bernardo do Campo"
+              >
+                São Bernardo do Campo
+              </button>
+              <button type="button" class="network-city-chip" data-network-city="Santos">
+                Santos
+              </button>
+            </div>
+            <label class="network-unknown-toggle"
+              ><input type="checkbox" name="includeUnknown" /> Na busca por cidade, incluir também
+              prestadores sem cidade informada na fonte</label
+            >
+            <p class="network-city-help">
+              Alguns laboratórios são listados apenas pelo nome. Consulte a unidade disponível com
+              nossa equipe.
+            </p>
             <div class="network-filter-actions">
-              <button class="reset-button" type="reset">Limpar filtros</button
-              ><button class="button button-primary" type="submit" hidden>Buscar na rede →</button>
+              <button class="reset-button" type="reset">Limpar filtros</button>
+              <button class="button button-primary" type="submit" data-requires-source disabled>
+                Buscar prestadores →
+              </button>
             </div>
           </form>
+          <div class="network-suggestions" id="networkSuggestions"></div>
           <div class="network-result-heading">
             <h2>Sua consulta</h2>
             <p class="network-status" id="networkStatus" role="status" aria-live="polite">
@@ -133,7 +178,7 @@
             target="_blank"
             rel="noopener noreferrer"
             href="index.html#contato"
-            >Pedir confirmação à equipe ↗</a
+            >Encontrar um plano para mim ↗</a
           >
           <div class="network-disclosure">
             <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -192,12 +237,105 @@
           <div>
             <span class="eyebrow eyebrow-light">Escolha com informação</span>
             <h2>Um prestador importante para você?</h2>
-            <p>Conte à equipe o nome do hospital, sua cidade e o produto que está considerando.</p>
+            <p>
+              Conte à equipe o nome do hospital e sua cidade. Vamos ajudar você a escolher o plano.
+            </p>
           </div>
           <a class="button button-white js-whatsapp" href="#contato">Conversar com a equipe ↗</a>
         </div>
       </section>
     </main>
+    <dialog class="network-detail-dialog" id="networkDetail" aria-labelledby="networkDetailTitle">
+      <div class="network-detail-content">
+        <button
+          id="networkDetailClose"
+          class="network-detail-close"
+          type="button"
+          aria-label="Fechar detalhes"
+        >
+          ×
+        </button>
+        <span class="eyebrow">Detalhes do material recebido</span>
+        <h2 id="networkDetailTitle"></h2>
+        <p id="networkDetailLocation"></p>
+        <p>
+          Você não precisa escolher um produto aqui. Esta linha permite conferir exatamente como o
+          prestador aparece na gravação.
+        </p>
+        <p class="network-scroll-hint">
+          Deslize a tabela para os lados para ver todos os produtos →
+        </p>
+        <div
+          class="network-matrix-scroll"
+          id="networkMatrixScroll"
+          tabindex="0"
+          role="region"
+          aria-label="Tabela original: produtos e atendimentos"
+        >
+          <img
+            id="networkDetailHeader"
+            alt="Cabeçalho original dos produtos e acomodações da tabela."
+          />
+          <img id="networkDetailImage" alt="" />
+        </div>
+        <p id="networkImageError" role="alert" hidden>
+          Não foi possível carregar o recorte. Reabra os detalhes ou peça a conferência à equipe.
+        </p>
+        <p id="networkDetailTime" class="network-city-help"></p>
+        <details class="network-legend">
+          <summary>Entenda as siglas da fonte</summary>
+          <dl>
+            <dt>H</dt>
+            <dd>Internação hospitalar.</dd>
+            <dt>M</dt>
+            <dd>Maternidade.</dd>
+            <dt>PS</dt>
+            <dd>Pronto-socorro geral.</dd>
+            <dt>PA</dt>
+            <dd>Pronto atendimento.</dd>
+            <dt>PSP</dt>
+            <dd>Pronto-socorro infantil e/ou pediátrico.</dd>
+            <dt>H¹</dt>
+            <dd>
+              Internação com especialidade e/ou público-alvo diferenciado. Verifique junto à
+              operadora.
+            </dd>
+            <dt>PS¹</dt>
+            <dd>
+              Pronto-socorro com especialidade e/ou público-alvo diferenciado. Verifique junto à
+              operadora.
+            </dd>
+            <dt>LAB</dt>
+            <dd>
+              Laboratório. Verifique junto à operadora as unidades e os procedimentos que possuem
+              cobertura.
+            </dd>
+            <dt>✓</dt>
+            <dd>
+              Possui atendimento, porém a operadora/seguradora não divulga quais tipos de
+              atendimento são oferecidos.
+            </dd>
+            <dt>–</dt>
+            <dd>
+              Atendimento não indicado nessa célula da tabela. Peça confirmação para o produto e a
+              unidade.
+            </dd>
+          </dl>
+        </details>
+        <p class="provider-note">
+          Material de referência de 05/10/2026. A presença nesta lista não garante atendimento em
+          todos os planos. Confirme produto, unidade e serviço com a equipe.
+        </p>
+        <a
+          id="networkDetailQuote"
+          class="button button-primary"
+          href="index.html#contato"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Quero um plano com este prestador ↗</a
+        >
+      </div>
+    </dialog>
     <footer class="site-footer">
       <div class="container footer-main">
         <a class="brand brand-footer" href="index.html"
