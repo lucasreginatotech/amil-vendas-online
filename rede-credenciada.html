@@ -98,6 +98,12 @@
                 <datalist id="networkCities"></datalist>
               </label>
               <label class="field"
+                >Zona / região
+                <select name="region" data-requires-source disabled>
+                  <option value="">Todas as zonas e regiões</option>
+                </select>
+              </label>
+              <label class="field"
                 >Nome do prestador <span class="field-optional">(opcional)</span>
                 <input
                   name="query"
@@ -169,7 +175,7 @@
             </div>
           </div>
           <button class="button button-primary" id="networkMore" type="button" hidden>
-            Mostrar mais prestadores
+            Ver todos os resultados
           </button>
           <div class="network-provenance" id="networkProvenance"></div>
           <a

@@ -1,6 +1,6 @@
 /* City-first directory and source evidence viewer. */
 .network-search .network-filters {
-  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .network-stats {
   margin: 0 0 22px;
@@ -196,9 +196,6 @@ body:has(.network-detail-dialog[open]) {
 @media (max-width: 900px) {
   .network-search .network-filters {
     grid-template-columns: 1fr 1fr;
-  }
-  .network-search .network-filters > label:last-child {
-    grid-column: 1 / -1;
   }
 }
 @media (max-width: 680px) {

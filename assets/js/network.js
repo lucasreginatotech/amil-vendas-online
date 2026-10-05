@@ -29,6 +29,9 @@ if (form) {
     const message = [
       'Olá! Quero uma cotação de plano Amil.',
       `Cidade: ${provider?.city || form.elements.city.value || 'A definir'}`,
+      form.elements.region.value
+        ? `Região: ${form.elements.region.selectedOptions[0].textContent}`
+        : '',
       provider ? `Prestador de interesse: ${provider.name}` : '',
       'Ainda não escolhi o plano. Quero confirmar o produto e a unidade que atendem minha necessidade.',
     ]
@@ -119,7 +122,7 @@ if (form) {
       matches.slice(0, visible).forEach((provider) => results.append(card(provider)));
     }
     more.hidden = matches.length <= visible;
-    more.textContent = `Mostrar mais (${Math.min(12, Math.max(0, matches.length - visible))} prestadores)`;
+    more.textContent = `Ver todos os resultados (${matches.length} prestadores)`;
   }
 
   function cityButton(city) {
@@ -135,7 +138,10 @@ if (form) {
   function relatedCities(filters) {
     suggestions.replaceChildren();
     const exact = data.providers.filter(
-      (p) => p.city && normalize(p.city) === normalize(filters.city),
+      (p) =>
+        p.city &&
+        (!filters.region || p.region === filters.region) &&
+        normalize(p.city) === normalize(filters.city),
     );
     const regions = new Set(exact.filter((p) => p.region !== 'Laboratórios').map((p) => p.region));
     const cities = [
@@ -161,6 +167,7 @@ if (form) {
     if (!data) return;
     const filters = {
       city: form.elements.city.value,
+      region: form.elements.region.value,
       query: form.elements.query.value,
       type: form.elements.type.value,
       includeUnknown: form.elements.includeUnknown.checked,
@@ -192,11 +199,17 @@ if (form) {
   });
   more.addEventListener('click', () => {
     const start = visible;
-    visible += 12;
+    visible = matches.length;
     render();
+    status.textContent = `Todos os ${matches.length} prestadores da busca estão exibidos${matches.some((p) => !p.city) ? ' · Há prestadores sem cidade informada na fonte' : ''}`;
     const firstNew = results.children[start];
     firstNew?.querySelector('.provider-detail')?.focus({ preventScroll: true });
-    firstNew?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    firstNew?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'instant'
+        : 'smooth',
+      block: 'nearest',
+    });
   });
   document.querySelector('#networkDetailClose').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => lastDetailTrigger?.focus({ preventScroll: true }));
@@ -218,6 +231,27 @@ if (form) {
       );
       const list = document.querySelector('#networkCities');
       cities.forEach((city) => list.append(new Option(city, city)));
+      const regions = [...new Set(data.providers.map((p) => p.region))];
+      const preferred = [
+        'Zona Sul - SP',
+        'Zona Leste - SP',
+        'Zona Oeste - SP',
+        'Zona Norte - SP',
+        'ABCD - SP',
+      ];
+      regions.sort((a, b) => {
+        const rank = (region) =>
+          preferred.includes(region) ? preferred.indexOf(region) : preferred.length;
+        return rank(a) - rank(b) || a.localeCompare(b, 'pt-BR');
+      });
+      regions.forEach((region) =>
+        form.elements.region.add(
+          new Option(
+            region === 'ABCD - SP' ? 'ABC Paulista' : region.replace(/ - SP$/, ''),
+            region,
+          ),
+        ),
+      );
       document.querySelector('#networkStats').textContent =
         `${data.providers.length} registros · ${cities.length} cidades identificadas · São Paulo`;
       badge.textContent = `Material de ${data.source.recordedAt.split('-').reverse().join('/')}`;

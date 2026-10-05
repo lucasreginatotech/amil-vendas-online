@@ -10,7 +10,7 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 - `assets/js/navigation.js`: menu para celular.
 - `assets/js/main.js`: pequenas funções comuns, como o ano do rodapé.
 - `assets/js/conversion.js`: seleção do perfil, preenchimento da cotação e botão fixo no celular.
-- `assets/js/network.js`: consulta por cidade, cartões, paginação e detalhes da gravação.
+- `assets/js/network.js`: consulta por cidade e zona, cartões, expansão dos resultados e detalhes da gravação.
 - `assets/js/network-data.js`: validação e filtros do catálogo.
 - `assets/data/network-source/`: recortes da tabela, carregados ao abrir os detalhes.
 - `scripts/check-network.mjs`: verifica o catálogo e os filtros.

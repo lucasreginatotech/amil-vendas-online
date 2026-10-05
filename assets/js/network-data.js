@@ -7,7 +7,7 @@ export const normalize = (value) =>
 
 export function filterProviders(
   providers,
-  { city = '', query = '', type = '', includeUnknown = false } = {},
+  { city = '', region = '', query = '', type = '', includeUnknown = false } = {},
 ) {
   const place = normalize(city);
   const words = normalize(query).split(/\s+/).filter(Boolean);
@@ -19,6 +19,7 @@ export function filterProviders(
       const text = normalize(`${provider.name} ${provider.region} ${provider.city || ''}`);
       return (
         cityMatches &&
+        (!region || provider.region === region) &&
         (!type || provider.type === type) &&
         words.every((word) => text.includes(word))
       );

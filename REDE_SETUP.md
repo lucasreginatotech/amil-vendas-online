@@ -23,7 +23,9 @@ O vídeo completo, dados do navegador, contatos de terceiros, avisos de acesso e
 
 ## Busca e manutenção
 
-assets/js/network-data.js valida o contrato e aplica filtros sem acentos. assets/js/network.js monta os cartões, a paginação, os atalhos de cidade e o diálogo da fonte. assets/css/network.css adapta a consulta e o diálogo para celular. As imagens dos detalhes são carregadas somente ao abrir o prestador.
+assets/js/network-data.js valida o contrato e aplica filtros sem acentos. assets/js/network.js monta os cartões, a expansão de todos os resultados, os atalhos de cidade e o diálogo da fonte. assets/css/network.css adapta a consulta e o diálogo para celular. As imagens dos detalhes são carregadas somente ao abrir o prestador.
+
+O filtro Zona / região usa os agrupamentos originais da gravação. ABC Paulista corresponde à seção ABCD - SP; as zonas da capital continuam separadas das regiões da Grande SP. O botão Ver todos os resultados revela todos os prestadores que correspondem aos filtros ativos em um único clique. Uma nova busca volta a mostrar os primeiros 12 cartões.
 
 As sugestões de outras cidades usam o mesmo agrupamento da fonte. Elas não representam distância ou proximidade geográfica; principalmente Interior reúne municípios muito distantes.
 

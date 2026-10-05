@@ -61,4 +61,29 @@ assert.equal(
 );
 assert.equal(validateNetwork({ ...data, providers: [{ ...data.providers[0], city: '' }] }), false);
 assert.equal(validateNetwork({ ...data, providers: [null] }), false);
+for (const region of [
+  'Zona Sul - SP',
+  'Zona Leste - SP',
+  'Zona Oeste - SP',
+  'Zona Norte - SP',
+  'ABCD - SP',
+]) {
+  const expected = data.providers.filter((p) => p.region === region);
+  const actual = filterProviders(data.providers, { region, includeUnknown: true });
+  assert.ok(actual.length > 0, `A região ${region} precisa ter resultados.`);
+  assert.deepEqual(
+    new Set(actual.map((p) => p.id)),
+    new Set(expected.map((p) => p.id)),
+    'Preservar exatamente o agrupamento da fonte, sem misturar as zonas da capital com a Grande SP.',
+  );
+}
+assert.equal(
+  filterProviders(data.providers, { region: 'Zona Sul - SP', city: 'Campinas' }).length,
+  0,
+);
+assert.ok(
+  filterProviders(data.providers, { region: 'ABCD - SP', city: 'São Bernardo do Campo' }).length >
+    0,
+);
+assert.equal(filterProviders(data.providers, { region: 'Zona desconhecida' }).length, 0);
 console.log('Catálogo, imagens, filtros, acentos e isolamento das cidades: OK (446 registros).');
