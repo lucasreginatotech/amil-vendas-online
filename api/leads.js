@@ -14,12 +14,12 @@ module.exports = async (req, res) => {
 
   let input;
   try {
-    input = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    input = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
   } catch {
     return sendJson(res, 400, { error: 'Invalid request body.' });
   }
 
-  const clean = (value, max) => typeof value === 'string' ? value.trim().slice(0, max) : '';
+  const clean = (value, max) => (typeof value === 'string' ? value.trim().slice(0, max) : '');
   const source = input.source === 'whatsapp' ? 'whatsapp' : 'formulario';
   const sourceDetail = clean(input.source_detail, 160);
 
@@ -61,7 +61,18 @@ module.exports = async (req, res) => {
   const city = clean(input.city, 100);
   const state = clean(input.state, 2).toUpperCase();
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !name || !phone || !plan || !Number.isInteger(lives) || lives < 1 || lives > 999 || !city || !/^[A-Z]{2}$/.test(state) || input.consent !== true) {
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    !name ||
+    !phone ||
+    !plan ||
+    !Number.isInteger(lives) ||
+    lives < 1 ||
+    lives > 999 ||
+    !city ||
+    !/^[A-Z]{2}$/.test(state) ||
+    input.consent !== true
+  ) {
     return sendJson(res, 400, { error: 'Please check the required fields and consent.' });
   }
 
@@ -73,7 +84,18 @@ module.exports = async (req, res) => {
         'Content-Type': 'application/json',
         Prefer: 'return=minimal',
       },
-      body: JSON.stringify({ name, email, phone, plan, lives, city, state, consent: true, source: 'formulario', source_detail: sourceDetail || 'Formulário de cotação' }),
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        plan,
+        lives,
+        city,
+        state,
+        consent: true,
+        source: 'formulario',
+        source_detail: sourceDetail || 'Formulário de cotação',
+      }),
     });
 
     if (!response.ok) return sendJson(res, 502, { error: 'Could not save this lead.' });

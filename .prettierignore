@@ -1,0 +1,7 @@
+# Versão histórica usada na comparação visual.
+antes/
+
+# Dependências e arquivos gerados.
+node_modules/
+.formatter-temp/
+formatter-metadata.tmp.json

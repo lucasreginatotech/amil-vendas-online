@@ -1,0 +1,15 @@
+# Dependências e arquivos temporários.
+node_modules/
+.formatter-temp/
+formatter-metadata.tmp.json
+*.log
+
+# Configurações locais e segredos.
+.env
+.env.*
+!.env.example
+.vercel/
+
+# Arquivos do sistema operacional.
+.DS_Store
+Thumbs.db

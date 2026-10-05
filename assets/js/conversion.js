@@ -2,10 +2,30 @@
 (() => {
   const form = document.querySelector('#quoteForm');
   const profiles = {
-    familia: { plan: 'Individual ou familiar', title: 'Cotação para você e sua família', description: 'Vamos conferir as modalidades disponíveis na sua cidade e os critérios de contratação para seu perfil.' },
-    empresa: { plan: 'Empresarial / PME', title: 'Cotação para sua empresa', description: 'Informe a quantidade de pessoas. Durante o atendimento, a equipe confirma o CNPJ, os vínculos e as condições do produto.' },
-    mei: { plan: 'Empresarial / PME', title: 'Cotação para MEI', description: 'A equipe verificará a elegibilidade do seu MEI, os documentos e as regras aplicáveis ao produto desejado.' },
-    dental: { plan: 'Plano odontológico', title: 'Cotação odontológica', description: 'Vamos conferir os produtos odontológicos disponíveis, os procedimentos previstos e a rede na sua região.' },
+    familia: {
+      plan: 'Individual ou familiar',
+      title: 'Cotação para você e sua família',
+      description:
+        'Vamos conferir as modalidades disponíveis na sua cidade e os critérios de contratação para seu perfil.',
+    },
+    empresa: {
+      plan: 'Empresarial / PME',
+      title: 'Cotação para sua empresa',
+      description:
+        'Informe a quantidade de pessoas. Durante o atendimento, a equipe confirma o CNPJ, os vínculos e as condições do produto.',
+    },
+    mei: {
+      plan: 'Empresarial / PME',
+      title: 'Cotação para MEI',
+      description:
+        'A equipe verificará a elegibilidade do seu MEI, os documentos e as regras aplicáveis ao produto desejado.',
+    },
+    dental: {
+      plan: 'Plano odontológico',
+      title: 'Cotação odontológica',
+      description:
+        'Vamos conferir os produtos odontológicos disponíveis, os procedimentos previstos e a rede na sua região.',
+    },
   };
   const notice = document.querySelector('#quoteProfile');
   function choose(profile, announce = true) {
@@ -27,9 +47,10 @@
     link.addEventListener('click', () => {
       choose(link.dataset.quoteProfile);
       // A navegação da âncora continua funcionando com ou sem JavaScript.
-      if (form) window.setTimeout(() => {
-        form.elements.name.focus({ preventScroll: true });
-      }, 0);
+      if (form)
+        window.setTimeout(() => {
+          form.elements.name.focus({ preventScroll: true });
+        }, 0);
     });
   });
   if (form) {
@@ -38,12 +59,19 @@
       if (profiles[form.dataset.profile]?.plan !== form.elements.plan.value) {
         delete form.dataset.profile;
         if (notice) notice.hidden = true;
-        document.querySelectorAll('.profile-selected').forEach((link) => link.classList.remove('profile-selected'));
+        document
+          .querySelectorAll('.profile-selected')
+          .forEach((link) => link.classList.remove('profile-selected'));
       }
     });
     const bar = document.querySelector('.mobile-quote-bar');
     if (bar && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(([entry]) => { bar.classList.toggle('is-hidden', entry.isIntersecting); }, { threshold: 0 });
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          bar.classList.toggle('is-hidden', entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
       observer.observe(form);
     }
   }

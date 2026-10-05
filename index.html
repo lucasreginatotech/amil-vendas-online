@@ -1,94 +1,672 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102f54">
-  <meta name="google-site-verification" content="S76vfhNYtPNFsR1nV1IM_1eLzl5Fj9bIsYZyguMQOiA">
-  <meta name="description" content="Conheça opções de planos Amil para você, sua família ou empresa. Compare coberturas e peça uma cotação personalizada. Atendimento consultivo pela Amil Vendas Online.">
-  <title>Amil Vendas Online | Encontre um plano que combina com você</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <script defer src="assets/js/config.js"></script>
-  <script defer src="assets/js/navigation.js"></script>
-  <script defer src="assets/js/whatsapp.js"></script>
-  <script defer src="assets/js/main.js"></script>
-  <script defer src="assets/js/conversion.js"></script>
-</head>
-<body class="has-quote-bar">
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Amil Vendas Online, início"><span class="brand-word">Amil</span><span>Vendas Online</span></a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu"><span></span><span></span><span></span></button>
-      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
-        <a class="current" href="index.html">Início</a><a href="planos.html">Planos</a><a href="rede-credenciada.html">Rede credenciada</a><a href="sobre.html">Como funciona</a><a href="#contato">Pedir cotação</a>
-      </nav>
-      <a class="button button-small button-primary js-whatsapp" href="#contato">Fale com um consultor <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
-
-  <main id="conteudo">
-    <section class="hero section-pad">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow"><i></i> Cuidado para cada fase da vida</span>
-          <h1>Planos Amil para cuidar de <em>quem importa.</em></h1>
-          <p class="hero-lead">Você, sua família ou sua empresa: encontre opções para o seu perfil e sua cidade. Compare rede de atendimento, condições e valores com uma cotação personalizada.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#contato">Receber minha cotação <span aria-hidden="true">→</span></a><a class="button button-link" href="planos.html">Comparar planos <span aria-hidden="true">↗</span></a></div>
-          <div class="trust-row"><span class="trust-icon">✓</span><span>Cotação sem compromisso</span><span class="trust-dot">·</span><span>Orientação pelo WhatsApp</span></div>
-        <p class="hero-kicker">Já tem um hospital em mente? <a href="rede-credenciada.html">Peça a confirmação da rede.</a></p></div>
-        <div class="hero-art" >
-          <img class="hero-photo" src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=1000&q=85" alt="Profissional de saúde em ambiente de atendimento moderno" fetchpriority="high">
-          <span class="hero-caption">Cuidado em cada fase da vida</span><div class="art-card art-card-top"><span class="art-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5a5 5 0 0 0-8 2 5 5 0 0 0-8-2C0 9 6 16 12 21c6-5 12-12 8-16Z"/></svg></span><span><b>Escolha com orientação</b><small>Um plano para a sua realidade</small></span></div>
-          <div class="art-card art-card-bottom"><span class="heart">✓</span><span><b>Você no centro do cuidado</b><small>Da primeira conversa à contratação</small></span></div>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102f54" />
+    <meta name="google-site-verification" content="S76vfhNYtPNFsR1nV1IM_1eLzl5Fj9bIsYZyguMQOiA" />
+    <meta
+      name="description"
+      content="Conheça opções de planos Amil para você, sua família ou empresa. Compare coberturas e peça uma cotação personalizada. Atendimento consultivo pela Amil Vendas Online."
+    />
+    <title>Amil Vendas Online | Encontre um plano que combina com você</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <script defer src="assets/js/config.js"></script>
+    <script defer src="assets/js/navigation.js"></script>
+    <script defer src="assets/js/whatsapp.js"></script>
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/conversion.js"></script>
+  </head>
+  <body class="has-quote-bar">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Amil Vendas Online, início"
+          ><span class="brand-word">Amil</span><span>Vendas Online</span></a
+        >
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Abrir menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+          <a class="current" href="index.html">Início</a><a href="planos.html">Planos</a
+          ><a href="rede-credenciada.html">Rede credenciada</a><a href="sobre.html">Como funciona</a
+          ><a href="#contato">Pedir cotação</a>
+        </nav>
+        <a class="button button-small button-primary js-whatsapp" href="#contato"
+          >Fale com um consultor <span aria-hidden="true">↗</span></a
+        >
       </div>
-    </section>
+    </header>
 
-    <div class="service-strip"><div class="container"><span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg>Para você e sua família</span><span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="13" rx="2"/><path d="M9 8V4h6v4M9 12v2m6-2v2M10 21v-4h4v4"/></svg>Para empresas e MEI</span><span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg>Condições explicadas com clareza</span></div></div>
-<section class="quick-choices section-pad" id="perfis"><div class="container"><div class="commercial-intro"><div><span class="eyebrow">Comece pelo seu perfil</span><h2>Para quem você procura um plano?</h2></div><p>Escolha o seu cenário. Levamos essa informação ao pedido de cotação para começar uma conversa mais objetiva.</p></div><div class="profile-grid"><article class="profile-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg></span><h3>Você e sua família</h3><p>Uma escolha que considera a rotina de cada pessoa e os lugares onde você quer ser atendido.</p><ul><li>Opções disponíveis na sua cidade</li><li>Quantidade de pessoas e faixas etárias</li><li>Modalidade adequada ao seu perfil</li></ul><a href="#contato" data-quote-profile="familia">Cotar para minha família →</a></article><article class="profile-card profile-card-featured"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="13" rx="2"/><path d="M9 8V4h6v4M9 12v2m6-2v2M10 21v-4h4v4"/></svg></span><h3>Empresa e PME</h3><p>Compare alternativas de assistência para sócios, colaboradores e dependentes elegíveis.</p><ul><li>Análise do CNPJ e dos vínculos</li><li>Composição do grupo de pessoas</li><li>Condições do produto empresarial</li></ul><a href="#contato" data-quote-profile="empresa">Cotar para minha empresa →</a></article><article class="profile-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></span><h3>Quem tem MEI</h3><p>Entenda se o seu negócio atende aos critérios de contratação de um plano empresarial.</p><ul><li>Verificação da elegibilidade</li><li>Documentos e atividade empresarial</li><li>Rede e valores para o grupo</li></ul><a href="#contato" data-quote-profile="mei">Ver opções para meu MEI →</a></article><article class="profile-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5a5 5 0 0 0-8 2 5 5 0 0 0-8-2C0 9 6 16 12 21c6-5 12-12 8-16Z"/></svg></span><h3>Plano odontológico</h3><p>Consulte alternativas para cuidar do sorriso, verificando os procedimentos e a rede de dentistas.</p><ul><li>Produtos disponíveis na região</li><li>Procedimentos e condições</li><li>Contratação e rede odontológica</li></ul><a href="#contato" data-quote-profile="dental">Cotar plano odontológico →</a></article></div><p class="commercial-note">A seleção indica seu interesse. A disponibilidade de produtos e a elegibilidade serão confirmadas no atendimento; procurar um plano para a família não garante contratação individual.</p></div></section>
-<section class="section-pad"><div class="container"><div class="commercial-intro"><div><span class="eyebrow">Compare o que faz diferença</span><h2>O melhor valor vai além da mensalidade.</h2></div><p>Uma proposta precisa fazer sentido para o seu orçamento, a sua rotina e a rede que você pretende usar.</p></div><div class="benefit-grid"><article class="benefit-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3>Atendimento na sua região</h3><p>Liste as cidades, os hospitais e os laboratórios importantes para você. A equipe ajuda a conferir a rede específica do produto.</p></article><article class="benefit-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></span><h3>Custos que você entende</h3><p>Compare a mensalidade com as regras de coparticipação, quando houver. Peça a tabela de cobranças para avaliar o custo de uso.</p></article><article class="benefit-card"><span class="large-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg></span><h3>Condições para sua rotina</h3><p>Confira abrangência, acomodação e prazos aplicáveis antes de decidir. Cada característica deve constar na proposta do produto.</p></article></div><div class="section-tail"><a class="button button-primary" href="planos.html#comparacao">Entender as diferenças →</a><p>Consulte os detalhes e leve suas dúvidas à equipe antes de contratar.</p></div></div></section>
-    <section class="feature-band section-pad"><div class="container feature-grid"><div><span class="eyebrow eyebrow-light">Mais informação. Melhor decisão.</span><h2>O plano ideal depende da sua realidade.</h2><p>Região de atendimento, faixa etária, composição familiar e tipo de contratação fazem diferença. Uma cotação personalizada ajuda a comparar o que realmente importa.</p><a class="button button-white js-whatsapp" href="#contato">Converse com a equipe <span aria-hidden="true">→</span></a></div><div class="feature-points"><article><span>01</span><div><b>Entenda as opções</b><p>Saiba como modalidade, acomodação e coparticipação podem afetar sua escolha.</p></div></article><article><span>02</span><div><b>Confira a rede por plano</b><p>Verifique os prestadores disponíveis na sua cidade antes de contratar.</p></div></article><article><span>03</span><div><b>Receba uma proposta</b><p>Os valores dependem do perfil, região e regras comerciais vigentes.</p></div></article></div></div></section>
-
-    <section class="section-pad"><div class="container split-callout"><div><span class="eyebrow">Rede credenciada</span><h2>Seu hospital faz parte da sua escolha.</h2><p>Diga quais hospitais, médicos ou laboratórios são importantes para você. A equipe pode ajudar a verificar o produto e a unidade que você pretende utilizar. A busca automática aguarda uma base oficial atualizada.</p><a class="button button-primary" href="rede-credenciada.html">Verificar um prestador <span aria-hidden="true">→</span></a></div><aside class="proposal-card"><div class="proposal-top"><span>Checklist para sua proposta</span><h3>Uma decisão bem informada.</h3></div><ul class="proposal-list"><li><b>Produto e rede</b><span>Nome exato do plano e unidades</span></li><li><b>Mensalidade</b><span>Valor, validade e regras de reajuste</span></li><li><b>Utilização</b><span>Coparticipação e condições</span></li><li><b>Contratação</b><span>Elegibilidade, documentos e vigência</span></li></ul><p class="proposal-foot">Confira estes itens na proposta recebida antes de aceitar.</p></aside></div></section>
-
-<section class="section-pad journey-section"><div class="container"><div class="section-heading"><span class="eyebrow">Da cotação à sua decisão</span><h2>Você entende cada próximo passo.</h2><p>Conhecer as opções é o começo. A contratação acontece depois de conferir o produto e aceitar as condições.</p></div><ol class="journey-grid"><li><h3>Conte seu perfil</h3><p>Informe cidade, quantidade de pessoas e o tipo de plano que procura. Não precisa conhecer todos os produtos.</p></li><li><h3>Converse com a equipe</h3><p>Confirme faixas etárias, modalidade de contratação e o que considera essencial na rede.</p></li><li><h3>Analise a proposta</h3><p>Confira valores, produto, rede, acomodação, coparticipação e condições de contratação.</p></li><li><h3>Decida com clareza</h3><p>Tire suas dúvidas, leia os documentos e confirme as regras de aceitação e início de vigência.</p></li></ol><div class="section-tail"><a class="button button-primary" href="#contato">Começar minha cotação →</a><p>Solicitar uma cotação não contrata o plano nem gera obrigação de compra.</p></div></div></section><section class="section-pad faq-section"><div class="container"><div class="section-heading"><span class="eyebrow">Antes de escolher</span><h2>Mais clareza. Menos dúvidas.</h2></div><div class="faq-list"><details><summary>O que preciso para receber uma cotação?</summary><p>Informe a cidade, o tipo de contratação e a quantidade de pessoas. Durante o atendimento, a equipe confirma as faixas etárias e os demais dados necessários para apresentar as opções disponíveis.</p></details><details><summary>Todos os planos atendem nos mesmos hospitais?</summary><p>A rede varia conforme o produto, a região e a unidade. Confira o plano exato e os serviços desejados antes de contratar. Você pode começar pela <a href="rede-credenciada.html">consulta da rede</a>.</p></details><details><summary>Posso cotar um plano com meu CNPJ ou MEI?</summary><p>A equipe verifica a elegibilidade do seu CNPJ, o número de vidas e as regras do produto. Essas condições precisam ser confirmadas antes da contratação.</p></details><details><summary>Como saber o preço do meu plano?</summary><p>A cotação considera a região, as faixas etárias, a quantidade de pessoas e as características do produto. Peça uma proposta com validade e compare a mensalidade junto com eventuais cobranças por utilização.</p></details><details><summary>O que preciso conferir sobre coparticipação?</summary><p>Nos produtos que adotam essa cobrança, parte do custo de determinados atendimentos pode ser cobrada além da mensalidade. Peça a tabela do produto e confira como os valores são calculados.</p></details><details><summary>Já tenho um plano. Posso avaliar uma troca?</summary><p>Sim, você pode pedir uma cotação e comparar com seu produto atual. A equipe deverá verificar as regras aplicáveis à mudança. Não há promessa de eliminação automática de carências.</p></details><details><summary>O formulário já contrata o plano?</summary><p>O formulário inicia o atendimento comercial. A contratação ocorre depois da análise de elegibilidade, apresentação da proposta e aceite das condições.</p></details></div><p class="source-reference">Para conferir os critérios de escolha: <a href="https://www.gov.br/ans/pt-br/publicidade-ans/contratacao-plano-de-saude" target="_blank" rel="noopener noreferrer">orientações de contratação da ANS ↗</a>.</p></div></section>
-    <section class="quote-section section-pad" id="contato">
-      <div class="container quote-grid">
-        <div class="quote-copy">
-          <span class="eyebrow">Vamos conversar?</span>
-          <h2>Seu próximo plano começa aqui.</h2>
-          <p>Conte seu perfil para receber uma cotação personalizada. Você revisa a mensagem e continua com nossa equipe pelo WhatsApp.</p>
-          <ul class="quote-expectations"><li>Opções conforme seu perfil e sua região.</li><li>Verificação da rede que importa para você.</li><li>Condições para comparar antes de decidir.</li></ul><div class="quote-promise"><span>✓</span><p><b>Sem complicação</b><br>As informações ajudam a preparar uma cotação mais adequada ao seu perfil.</p></div>
-          <div class="quote-whatsapp"><span class="quote-wa-icon" aria-hidden="true">♡</span><div><b>Atendimento pelo WhatsApp</b><small>Você confere a mensagem antes de enviar.</small></div></div>
-        </div>
-        <form class="quote-form" id="quoteForm" method="post">
-          <noscript><p>Para preparar sua mensagem automaticamente, ative o JavaScript. Você também pode <a href="https://wa.me/551134125912" target="_blank" rel="noopener noreferrer">pedir uma cotação pelo WhatsApp</a>.</p></noscript>
-          <div class="quote-form-heading"><span>Pedido de cotação</span><small>Campos com * são obrigatórios</small></div>
-          <div class="quote-profile" id="quoteProfile" role="status" aria-live="polite" hidden><b></b><p></p></div><div class="quote-fields">
-            <label class="field field-wide">Seu nome *<input name="name" autocomplete="name" type="text" placeholder="Como podemos chamar você?" required></label>
-            <label class="field">E-mail *<input name="email" autocomplete="email" type="email" placeholder="voce@email.com" required></label>
-            <label class="field">WhatsApp com DDD *<input name="phone" autocomplete="tel" type="tel" inputmode="tel" maxlength="16" placeholder="(11) 99999-9999" required></label>
-            <label class="field">Tipo de plano *<select name="plan" required><option value="" selected disabled>Selecione uma opção</option><option>Individual ou familiar</option><option>Empresarial / PME</option><option>Plano odontológico</option><option>Ainda quero orientação</option></select></label>
-            <label class="field">Quantidade de pessoas *<input name="lives" type="number" min="1" max="999" step="1" inputmode="numeric" placeholder="Ex.: 3" required></label>
-            <label class="field">Cidade *<input name="city" autocomplete="address-level2" type="text" placeholder="Sua cidade" required></label>
-            <label class="field">Estado (UF) *<select name="state" autocomplete="address-level1" required><option value="" selected disabled>Selecione</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></label>
+    <main id="conteudo">
+      <section class="hero section-pad">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow"><i></i> Cuidado para cada fase da vida</span>
+            <h1>Planos Amil para cuidar de <em>quem importa.</em></h1>
+            <p class="hero-lead">
+              Você, sua família ou sua empresa: encontre opções para o seu perfil e sua cidade.
+              Compare rede de atendimento, condições e valores com uma cotação personalizada.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contato"
+                >Receber minha cotação <span aria-hidden="true">→</span></a
+              ><a class="button button-link" href="planos.html"
+                >Comparar planos <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="trust-row">
+              <span class="trust-icon">✓</span><span>Cotação sem compromisso</span
+              ><span class="trust-dot">·</span><span>Orientação pelo WhatsApp</span>
+            </div>
+            <p class="hero-kicker">
+              Já tem um hospital em mente?
+              <a href="rede-credenciada.html">Peça a confirmação da rede.</a>
+            </p>
           </div>
-<details class="quote-optional"><summary>Quer deixar a cotação mais direcionada? (opcional)</summary><label class="field">O que é mais importante para você?<select name="priority"><option value="">Prefiro conversar com a equipe</option><option>Mensalidade e custo de utilização</option><option>Hospitais e laboratórios específicos</option><option>Abrangência em outras cidades</option><option>Acomodação em internação</option><option>Entender a troca do meu plano atual</option></select></label><label class="field">Hospital ou laboratório que deseja conferir<input name="provider" type="text" maxlength="160" placeholder="Informe o nome da unidade, se souber"><small>Não informe diagnósticos ou dados clínicos. Esta preferência vai na mensagem do WhatsApp.</small></label></details>
-          <label class="consent-check"><input name="consent" type="checkbox" required><span>Autorizo o uso dos dados para atender meu pedido de cotação. <a href="sobre.html#privacidade" target="_blank" rel="noopener noreferrer">Como meus dados são usados ↗</a>.</span></label>
-          <button class="button button-primary quote-submit" type="submit">Solicitar minha cotação <span aria-hidden="true">↗</span></button>
-          <p class="form-privacy" data-submit-status role="status" aria-live="polite"></p>
-          <p class="form-privacy">Seu pedido inicia um atendimento comercial. Revise a mensagem no WhatsApp e toque em enviar para continuar. A cotação não representa contratação.</p>
-        </form>
-      </div>
-    </section>
-  </main>
+          <div class="hero-art">
+            <img
+              class="hero-photo"
+              src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=1000&q=85"
+              alt="Profissional de saúde em ambiente de atendimento moderno"
+              fetchpriority="high"
+            />
+            <span class="hero-caption">Cuidado em cada fase da vida</span>
+            <div class="art-card art-card-top">
+              <span class="art-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20 5a5 5 0 0 0-8 2 5 5 0 0 0-8-2C0 9 6 16 12 21c6-5 12-12 8-16Z"
+                  /></svg></span
+              ><span
+                ><b>Escolha com orientação</b><small>Um plano para a sua realidade</small></span
+              >
+            </div>
+            <div class="art-card art-card-bottom">
+              <span class="heart">✓</span
+              ><span
+                ><b>Você no centro do cuidado</b
+                ><small>Da primeira conversa à contratação</small></span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer class="site-footer"><div class="container footer-main"><a class="brand brand-footer" href="index.html"><span class="brand-word">Amil</span><span>Vendas Online</span></a><p>Informação e orientação para ajudar você a conhecer opções de planos Amil.</p><nav aria-label="Links do rodapé"><a href="planos.html">Planos</a><a href="rede-credenciada.html">Rede credenciada</a><a href="sobre.html">Como funciona</a></nav></div><div class="container footer-legal"><p>Amil Vendas Online é um canal independente de divulgação e atendimento comercial. Não é o site institucional da Amil. Produtos, preços, rede, abrangência e condições dependem da disponibilidade e confirmação da operadora para cada contratação.</p><span>© <span data-year></span> Amil Vendas Online</span><span class="site-credit">Desenvolvido por <b>Lucas Reginato Tech</b></span></div></footer>
-  <a class="floating-contact js-whatsapp" href="#contato" aria-label="Fale conosco pelo WhatsApp"><small>Fale com a gente</small></a>
-<div class="mobile-quote-bar" aria-label="Cotação rápida"><div><b>Seu plano começa aqui</b><small>Cotação sem compromisso</small></div><a class="button button-primary" href="#contato">Pedir cotação →</a></div>
-</body>
+      <div class="service-strip">
+        <div class="container">
+          <span
+            ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3" />
+              <path d="M5 21v-3a7 7 0 0 1 14 0v3" /></svg
+            >Para você e sua família</span
+          ><span
+            ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="8" width="16" height="13" rx="2" />
+              <path d="M9 8V4h6v4M9 12v2m6-2v2M10 21v-4h4v4" /></svg
+            >Para empresas e MEI</span
+          ><span
+            ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z" />
+              <path d="m8 12 3 3 5-6" /></svg
+            >Condições explicadas com clareza</span
+          >
+        </div>
+      </div>
+      <section class="quick-choices section-pad" id="perfis">
+        <div class="container">
+          <div class="commercial-intro">
+            <div>
+              <span class="eyebrow">Comece pelo seu perfil</span>
+              <h2>Para quem você procura um plano?</h2>
+            </div>
+            <p>
+              Escolha o seu cenário. Levamos essa informação ao pedido de cotação para começar uma
+              conversa mais objetiva.
+            </p>
+          </div>
+          <div class="profile-grid">
+            <article class="profile-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="8" r="3" />
+                  <path d="M5 21v-3a7 7 0 0 1 14 0v3" /></svg
+              ></span>
+              <h3>Você e sua família</h3>
+              <p>
+                Uma escolha que considera a rotina de cada pessoa e os lugares onde você quer ser
+                atendido.
+              </p>
+              <ul>
+                <li>Opções disponíveis na sua cidade</li>
+                <li>Quantidade de pessoas e faixas etárias</li>
+                <li>Modalidade adequada ao seu perfil</li>
+              </ul>
+              <a href="#contato" data-quote-profile="familia">Cotar para minha família →</a>
+            </article>
+            <article class="profile-card profile-card-featured">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="8" width="16" height="13" rx="2" />
+                  <path d="M9 8V4h6v4M9 12v2m6-2v2M10 21v-4h4v4" /></svg
+              ></span>
+              <h3>Empresa e PME</h3>
+              <p>
+                Compare alternativas de assistência para sócios, colaboradores e dependentes
+                elegíveis.
+              </p>
+              <ul>
+                <li>Análise do CNPJ e dos vínculos</li>
+                <li>Composição do grupo de pessoas</li>
+                <li>Condições do produto empresarial</li>
+              </ul>
+              <a href="#contato" data-quote-profile="empresa">Cotar para minha empresa →</a>
+            </article>
+            <article class="profile-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z" />
+                  <path d="m8 12 3 3 5-6" /></svg
+              ></span>
+              <h3>Quem tem MEI</h3>
+              <p>
+                Entenda se o seu negócio atende aos critérios de contratação de um plano
+                empresarial.
+              </p>
+              <ul>
+                <li>Verificação da elegibilidade</li>
+                <li>Documentos e atividade empresarial</li>
+                <li>Rede e valores para o grupo</li>
+              </ul>
+              <a href="#contato" data-quote-profile="mei">Ver opções para meu MEI →</a>
+            </article>
+            <article class="profile-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 5a5 5 0 0 0-8 2 5 5 0 0 0-8-2C0 9 6 16 12 21c6-5 12-12 8-16Z" /></svg
+              ></span>
+              <h3>Plano odontológico</h3>
+              <p>
+                Consulte alternativas para cuidar do sorriso, verificando os procedimentos e a rede
+                de dentistas.
+              </p>
+              <ul>
+                <li>Produtos disponíveis na região</li>
+                <li>Procedimentos e condições</li>
+                <li>Contratação e rede odontológica</li>
+              </ul>
+              <a href="#contato" data-quote-profile="dental">Cotar plano odontológico →</a>
+            </article>
+          </div>
+          <p class="commercial-note">
+            A seleção indica seu interesse. A disponibilidade de produtos e a elegibilidade serão
+            confirmadas no atendimento; procurar um plano para a família não garante contratação
+            individual.
+          </p>
+        </div>
+      </section>
+      <section class="section-pad">
+        <div class="container">
+          <div class="commercial-intro">
+            <div>
+              <span class="eyebrow">Compare o que faz diferença</span>
+              <h2>O melhor valor vai além da mensalidade.</h2>
+            </div>
+            <p>
+              Uma proposta precisa fazer sentido para o seu orçamento, a sua rotina e a rede que
+              você pretende usar.
+            </p>
+          </div>
+          <div class="benefit-grid">
+            <article class="benefit-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                  <circle cx="12" cy="10" r="2.5" /></svg
+              ></span>
+              <h3>Atendimento na sua região</h3>
+              <p>
+                Liste as cidades, os hospitais e os laboratórios importantes para você. A equipe
+                ajuda a conferir a rede específica do produto.
+              </p>
+            </article>
+            <article class="benefit-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z" />
+                  <path d="m8 12 3 3 5-6" /></svg
+              ></span>
+              <h3>Custos que você entende</h3>
+              <p>
+                Compare a mensalidade com as regras de coparticipação, quando houver. Peça a tabela
+                de cobranças para avaliar o custo de uso.
+              </p>
+            </article>
+            <article class="benefit-card">
+              <span class="large-icon"
+                ><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="8" r="3" />
+                  <path d="M5 21v-3a7 7 0 0 1 14 0v3" /></svg
+              ></span>
+              <h3>Condições para sua rotina</h3>
+              <p>
+                Confira abrangência, acomodação e prazos aplicáveis antes de decidir. Cada
+                característica deve constar na proposta do produto.
+              </p>
+            </article>
+          </div>
+          <div class="section-tail">
+            <a class="button button-primary" href="planos.html#comparacao"
+              >Entender as diferenças →</a
+            >
+            <p>Consulte os detalhes e leve suas dúvidas à equipe antes de contratar.</p>
+          </div>
+        </div>
+      </section>
+      <section class="feature-band section-pad">
+        <div class="container feature-grid">
+          <div>
+            <span class="eyebrow eyebrow-light">Mais informação. Melhor decisão.</span>
+            <h2>O plano ideal depende da sua realidade.</h2>
+            <p>
+              Região de atendimento, faixa etária, composição familiar e tipo de contratação fazem
+              diferença. Uma cotação personalizada ajuda a comparar o que realmente importa.
+            </p>
+            <a class="button button-white js-whatsapp" href="#contato"
+              >Converse com a equipe <span aria-hidden="true">→</span></a
+            >
+          </div>
+          <div class="feature-points">
+            <article>
+              <span>01</span>
+              <div>
+                <b>Entenda as opções</b>
+                <p>Saiba como modalidade, acomodação e coparticipação podem afetar sua escolha.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <b>Confira a rede por plano</b>
+                <p>Verifique os prestadores disponíveis na sua cidade antes de contratar.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <b>Receba uma proposta</b>
+                <p>Os valores dependem do perfil, região e regras comerciais vigentes.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad">
+        <div class="container split-callout">
+          <div>
+            <span class="eyebrow">Rede credenciada</span>
+            <h2>Seu hospital faz parte da sua escolha.</h2>
+            <p>
+              Diga quais hospitais, médicos ou laboratórios são importantes para você. A equipe pode
+              ajudar a verificar o produto e a unidade que você pretende utilizar. A busca
+              automática aguarda uma base oficial atualizada.
+            </p>
+            <a class="button button-primary" href="rede-credenciada.html"
+              >Verificar um prestador <span aria-hidden="true">→</span></a
+            >
+          </div>
+          <aside class="proposal-card">
+            <div class="proposal-top">
+              <span>Checklist para sua proposta</span>
+              <h3>Uma decisão bem informada.</h3>
+            </div>
+            <ul class="proposal-list">
+              <li><b>Produto e rede</b><span>Nome exato do plano e unidades</span></li>
+              <li><b>Mensalidade</b><span>Valor, validade e regras de reajuste</span></li>
+              <li><b>Utilização</b><span>Coparticipação e condições</span></li>
+              <li><b>Contratação</b><span>Elegibilidade, documentos e vigência</span></li>
+            </ul>
+            <p class="proposal-foot">Confira estes itens na proposta recebida antes de aceitar.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-pad journey-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Da cotação à sua decisão</span>
+            <h2>Você entende cada próximo passo.</h2>
+            <p>
+              Conhecer as opções é o começo. A contratação acontece depois de conferir o produto e
+              aceitar as condições.
+            </p>
+          </div>
+          <ol class="journey-grid">
+            <li>
+              <h3>Conte seu perfil</h3>
+              <p>
+                Informe cidade, quantidade de pessoas e o tipo de plano que procura. Não precisa
+                conhecer todos os produtos.
+              </p>
+            </li>
+            <li>
+              <h3>Converse com a equipe</h3>
+              <p>
+                Confirme faixas etárias, modalidade de contratação e o que considera essencial na
+                rede.
+              </p>
+            </li>
+            <li>
+              <h3>Analise a proposta</h3>
+              <p>
+                Confira valores, produto, rede, acomodação, coparticipação e condições de
+                contratação.
+              </p>
+            </li>
+            <li>
+              <h3>Decida com clareza</h3>
+              <p>
+                Tire suas dúvidas, leia os documentos e confirme as regras de aceitação e início de
+                vigência.
+              </p>
+            </li>
+          </ol>
+          <div class="section-tail">
+            <a class="button button-primary" href="#contato">Começar minha cotação →</a>
+            <p>Solicitar uma cotação não contrata o plano nem gera obrigação de compra.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-pad faq-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Antes de escolher</span>
+            <h2>Mais clareza. Menos dúvidas.</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>O que preciso para receber uma cotação?</summary>
+              <p>
+                Informe a cidade, o tipo de contratação e a quantidade de pessoas. Durante o
+                atendimento, a equipe confirma as faixas etárias e os demais dados necessários para
+                apresentar as opções disponíveis.
+              </p>
+            </details>
+            <details>
+              <summary>Todos os planos atendem nos mesmos hospitais?</summary>
+              <p>
+                A rede varia conforme o produto, a região e a unidade. Confira o plano exato e os
+                serviços desejados antes de contratar. Você pode começar pela
+                <a href="rede-credenciada.html">consulta da rede</a>.
+              </p>
+            </details>
+            <details>
+              <summary>Posso cotar um plano com meu CNPJ ou MEI?</summary>
+              <p>
+                A equipe verifica a elegibilidade do seu CNPJ, o número de vidas e as regras do
+                produto. Essas condições precisam ser confirmadas antes da contratação.
+              </p>
+            </details>
+            <details>
+              <summary>Como saber o preço do meu plano?</summary>
+              <p>
+                A cotação considera a região, as faixas etárias, a quantidade de pessoas e as
+                características do produto. Peça uma proposta com validade e compare a mensalidade
+                junto com eventuais cobranças por utilização.
+              </p>
+            </details>
+            <details>
+              <summary>O que preciso conferir sobre coparticipação?</summary>
+              <p>
+                Nos produtos que adotam essa cobrança, parte do custo de determinados atendimentos
+                pode ser cobrada além da mensalidade. Peça a tabela do produto e confira como os
+                valores são calculados.
+              </p>
+            </details>
+            <details>
+              <summary>Já tenho um plano. Posso avaliar uma troca?</summary>
+              <p>
+                Sim, você pode pedir uma cotação e comparar com seu produto atual. A equipe deverá
+                verificar as regras aplicáveis à mudança. Não há promessa de eliminação automática
+                de carências.
+              </p>
+            </details>
+            <details>
+              <summary>O formulário já contrata o plano?</summary>
+              <p>
+                O formulário inicia o atendimento comercial. A contratação ocorre depois da análise
+                de elegibilidade, apresentação da proposta e aceite das condições.
+              </p>
+            </details>
+          </div>
+          <p class="source-reference">
+            Para conferir os critérios de escolha:
+            <a
+              href="https://www.gov.br/ans/pt-br/publicidade-ans/contratacao-plano-de-saude"
+              target="_blank"
+              rel="noopener noreferrer"
+              >orientações de contratação da ANS ↗</a
+            >.
+          </p>
+        </div>
+      </section>
+      <section class="quote-section section-pad" id="contato">
+        <div class="container quote-grid">
+          <div class="quote-copy">
+            <span class="eyebrow">Vamos conversar?</span>
+            <h2>Seu próximo plano começa aqui.</h2>
+            <p>
+              Conte seu perfil para receber uma cotação personalizada. Você revisa a mensagem e
+              continua com nossa equipe pelo WhatsApp.
+            </p>
+            <ul class="quote-expectations">
+              <li>Opções conforme seu perfil e sua região.</li>
+              <li>Verificação da rede que importa para você.</li>
+              <li>Condições para comparar antes de decidir.</li>
+            </ul>
+            <div class="quote-promise">
+              <span>✓</span>
+              <p>
+                <b>Sem complicação</b><br />As informações ajudam a preparar uma cotação mais
+                adequada ao seu perfil.
+              </p>
+            </div>
+            <div class="quote-whatsapp">
+              <span class="quote-wa-icon" aria-hidden="true">♡</span>
+              <div>
+                <b>Atendimento pelo WhatsApp</b
+                ><small>Você confere a mensagem antes de enviar.</small>
+              </div>
+            </div>
+          </div>
+          <form class="quote-form" id="quoteForm" method="post">
+            <noscript
+              ><p>
+                Para preparar sua mensagem automaticamente, ative o JavaScript. Você também pode
+                <a href="https://wa.me/551134125912" target="_blank" rel="noopener noreferrer"
+                  >pedir uma cotação pelo WhatsApp</a
+                >.
+              </p></noscript
+            >
+            <div class="quote-form-heading">
+              <span>Pedido de cotação</span><small>Campos com * são obrigatórios</small>
+            </div>
+            <div class="quote-profile" id="quoteProfile" role="status" aria-live="polite" hidden>
+              <b></b>
+              <p></p>
+            </div>
+            <div class="quote-fields">
+              <label class="field field-wide"
+                >Seu nome *<input
+                  name="name"
+                  autocomplete="name"
+                  type="text"
+                  placeholder="Como podemos chamar você?"
+                  required
+              /></label>
+              <label class="field"
+                >E-mail *<input
+                  name="email"
+                  autocomplete="email"
+                  type="email"
+                  placeholder="voce@email.com"
+                  required
+              /></label>
+              <label class="field"
+                >WhatsApp com DDD *<input
+                  name="phone"
+                  autocomplete="tel"
+                  type="tel"
+                  inputmode="tel"
+                  maxlength="16"
+                  placeholder="(11) 99999-9999"
+                  required
+              /></label>
+              <label class="field"
+                >Tipo de plano *<select name="plan" required>
+                  <option value="" selected disabled>Selecione uma opção</option>
+                  <option>Individual ou familiar</option>
+                  <option>Empresarial / PME</option>
+                  <option>Plano odontológico</option>
+                  <option>Ainda quero orientação</option>
+                </select></label
+              >
+              <label class="field"
+                >Quantidade de pessoas *<input
+                  name="lives"
+                  type="number"
+                  min="1"
+                  max="999"
+                  step="1"
+                  inputmode="numeric"
+                  placeholder="Ex.: 3"
+                  required
+              /></label>
+              <label class="field"
+                >Cidade *<input
+                  name="city"
+                  autocomplete="address-level2"
+                  type="text"
+                  placeholder="Sua cidade"
+                  required
+              /></label>
+              <label class="field"
+                >Estado (UF) *<select name="state" autocomplete="address-level1" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option>AC</option>
+                  <option>AL</option>
+                  <option>AP</option>
+                  <option>AM</option>
+                  <option>BA</option>
+                  <option>CE</option>
+                  <option>DF</option>
+                  <option>ES</option>
+                  <option>GO</option>
+                  <option>MA</option>
+                  <option>MT</option>
+                  <option>MS</option>
+                  <option>MG</option>
+                  <option>PA</option>
+                  <option>PB</option>
+                  <option>PR</option>
+                  <option>PE</option>
+                  <option>PI</option>
+                  <option>RJ</option>
+                  <option>RN</option>
+                  <option>RS</option>
+                  <option>RO</option>
+                  <option>RR</option>
+                  <option>SC</option>
+                  <option>SP</option>
+                  <option>SE</option>
+                  <option>TO</option>
+                </select></label
+              >
+            </div>
+            <details class="quote-optional">
+              <summary>Quer deixar a cotação mais direcionada? (opcional)</summary>
+              <label class="field"
+                >O que é mais importante para você?<select name="priority">
+                  <option value="">Prefiro conversar com a equipe</option>
+                  <option>Mensalidade e custo de utilização</option>
+                  <option>Hospitais e laboratórios específicos</option>
+                  <option>Abrangência em outras cidades</option>
+                  <option>Acomodação em internação</option>
+                  <option>Entender a troca do meu plano atual</option>
+                </select></label
+              ><label class="field"
+                >Hospital ou laboratório que deseja conferir<input
+                  name="provider"
+                  type="text"
+                  maxlength="160"
+                  placeholder="Informe o nome da unidade, se souber"
+                /><small
+                  >Não informe diagnósticos ou dados clínicos. Esta preferência vai na mensagem do
+                  WhatsApp.</small
+                ></label
+              >
+            </details>
+            <label class="consent-check"
+              ><input name="consent" type="checkbox" required /><span
+                >Autorizo o uso dos dados para atender meu pedido de cotação.
+                <a href="sobre.html#privacidade" target="_blank" rel="noopener noreferrer"
+                  >Como meus dados são usados ↗</a
+                >.</span
+              ></label
+            >
+            <button class="button button-primary quote-submit" type="submit">
+              Solicitar minha cotação <span aria-hidden="true">↗</span>
+            </button>
+            <p class="form-privacy" data-submit-status role="status" aria-live="polite"></p>
+            <p class="form-privacy">
+              Seu pedido inicia um atendimento comercial. Revise a mensagem no WhatsApp e toque em
+              enviar para continuar. A cotação não representa contratação.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <a class="brand brand-footer" href="index.html"
+          ><span class="brand-word">Amil</span><span>Vendas Online</span></a
+        >
+        <p>Informação e orientação para ajudar você a conhecer opções de planos Amil.</p>
+        <nav aria-label="Links do rodapé">
+          <a href="planos.html">Planos</a><a href="rede-credenciada.html">Rede credenciada</a
+          ><a href="sobre.html">Como funciona</a>
+        </nav>
+      </div>
+      <div class="container footer-legal">
+        <p>
+          Amil Vendas Online é um canal independente de divulgação e atendimento comercial. Não é o
+          site institucional da Amil. Produtos, preços, rede, abrangência e condições dependem da
+          disponibilidade e confirmação da operadora para cada contratação.
+        </p>
+        <span>© <span data-year></span> Amil Vendas Online</span
+        ><span class="site-credit">Desenvolvido por <b>Lucas Reginato Tech</b></span>
+      </div>
+    </footer>
+    <a class="floating-contact js-whatsapp" href="#contato" aria-label="Fale conosco pelo WhatsApp"
+      ><small>Fale com a gente</small></a
+    >
+    <div class="mobile-quote-bar" aria-label="Cotação rápida">
+      <div><b>Seu plano começa aqui</b><small>Cotação sem compromisso</small></div>
+      <a class="button button-primary" href="#contato">Pedir cotação →</a>
+    </div>
+  </body>
 </html>

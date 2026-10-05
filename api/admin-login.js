@@ -23,8 +23,13 @@ module.exports = async (req, res) => {
   if (!CRM_ADMIN_PASSWORD) return sendJson(res, 503, { error: 'CRM login is not configured yet.' });
 
   let input;
-  try { input = readJson(req); } catch { return sendJson(res, 400, { error: 'Invalid request body.' }); }
-  if (!sameSecret(input.password, CRM_ADMIN_PASSWORD)) return sendJson(res, 401, { error: 'Senha incorreta.' });
+  try {
+    input = readJson(req);
+  } catch {
+    return sendJson(res, 400, { error: 'Invalid request body.' });
+  }
+  if (!sameSecret(input.password, CRM_ADMIN_PASSWORD))
+    return sendJson(res, 401, { error: 'Senha incorreta.' });
 
   setSessionCookie(res, CRM_ADMIN_PASSWORD);
   return sendJson(res, 200, { ok: true });

@@ -7,7 +7,10 @@ Para ativar, obtenha uma exportação autorizada e atualizada da Amil com a rela
 ```json
 {
   "status": "ready",
-  "source": { "label": "Nome do documento oficial", "url": "https://galeria.amil.com.br/CAMINHO-REAL-DO-DOCUMENTO" },
+  "source": {
+    "label": "Nome do documento oficial",
+    "url": "https://galeria.amil.com.br/CAMINHO-REAL-DO-DOCUMENTO"
+  },
   "updatedAt": "DATA-REAL-DA-CONFERENCIA-EM-ISO-8601",
   "providers": [
     {

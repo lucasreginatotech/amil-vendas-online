@@ -1,95 +1,262 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#f4f7fc">
-  <title>CRM | Amil Vendas Online</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/crm.css">
-  <script defer src="assets/js/crm.js"></script>
-</head>
-<body>
-  <main class="crm-shell">
-    <header class="crm-topbar">
-      <a class="crm-brand" href="index.html" aria-label="Amil Vendas Online, voltar ao site"><span class="brand-mark">A</span><span class="brand-copy"><b>Amil Vendas</b><small>PAINEL DE ATENDIMENTO</small></span></a>
-      <div class="crm-actions" id="crmActions" hidden>
-        <span class="secure-label"><i></i> CRM privado</span>
-        <button class="icon-button" id="exportCsv" type="button" aria-label="Baixar planilha Excel" title="Baixar planilha Excel">⇩<span> Exportar</span></button>
-        <button class="icon-button logout-button" id="logout" type="button">Sair</button>
-      </div>
-    </header>
-
-    <section class="login-card" id="loginPanel" hidden>
-      <span class="login-symbol">A</span>
-      <span class="eyebrow">Área da equipe</span>
-      <h1>Seus leads, organizados.</h1>
-      <p>Entre com a senha administrativa para acompanhar os pedidos de cotação.</p>
-      <form id="loginForm">
-        <label for="adminPassword">Senha de acesso</label>
-        <input id="adminPassword" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
-        <button class="button button-primary" type="submit">Acessar meu CRM <span aria-hidden="true">→</span></button>
-      </form>
-      <p class="crm-message" id="loginMessage" role="status"></p>
-      <a class="back-to-site" href="index.html">← Voltar para o site</a>
-    </section>
-
-    <section class="dashboard" id="dashboard" hidden>
-      <div class="welcome-row">
-        <div><span class="eyebrow"><i></i> SEU ESPAÇO DE VENDAS</span><h1>Olá, equipe <span class="wave">✳</span></h1><p>Veja como estão os pedidos de cotação do seu site.</p></div>
-        <div class="today-card"><span>HOJE</span><strong id="todayDate"></strong><small id="lastUpdated">Atualizando...</small></div>
-      </div>
-
-      <nav class="tab-nav" role="tablist" aria-label="Seções do CRM">
-        <button class="tab-button is-active" id="overviewTab" type="button" role="tab" aria-selected="true" aria-controls="overviewPanel" data-tab="overview">◫ <span>Visão geral</span></button>
-        <button class="tab-button" id="leadsTab" type="button" role="tab" aria-selected="false" aria-controls="leadsPanel" data-tab="leads">♙ <span>Meus leads</span><b class="tab-count" id="tabLeadCount">0</b></button>
-      </nav>
-
-      <p class="crm-message dashboard-message" id="dashboardMessage" role="status" aria-live="polite"></p>
-
-      <section class="tab-panel is-active" id="overviewPanel" role="tabpanel" aria-labelledby="overviewTab" data-panel="overview">
-        <div class="section-heading"><div><h2>Resumo das cotações</h2><p>O movimento dos leads recebidos pelo formulário.</p></div><button class="text-button" type="button" data-go-leads>Ver todos os leads <span aria-hidden="true">→</span></button></div>
-        <div class="stats-grid">
-          <article class="stat-card stat-total"><span class="stat-icon">♙</span><span class="stat-label">Total de leads</span><strong id="totalLeads">0</strong><small>Todos os pedidos recebidos</small></article>
-          <article class="stat-card stat-new"><span class="stat-icon">✦</span><span class="stat-label">Novos</span><strong id="newLeads">0</strong><small>Aguardando primeiro contato</small></article>
-          <article class="stat-card stat-active"><span class="stat-icon">↗</span><span class="stat-label">Em atendimento</span><strong id="activeLeads">0</strong><small>Conversas em andamento</small></article>
-          <article class="stat-card stat-won"><span class="stat-icon">✓</span><span class="stat-label">Fechados</span><strong id="wonLeads">0</strong><small>Cotações convertidas</small></article>
-          <article class="stat-card stat-clicks"><span class="stat-icon">☏</span><span class="stat-label">WhatsApp direto</span><strong id="whatsappClicks">0</strong><small>Cliques sem formulário</small></article>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f4f7fc" />
+    <title>CRM | Amil Vendas Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/crm.css" />
+    <script defer src="assets/js/crm.js"></script>
+  </head>
+  <body>
+    <main class="crm-shell">
+      <header class="crm-topbar">
+        <a class="crm-brand" href="index.html" aria-label="Amil Vendas Online, voltar ao site"
+          ><span class="brand-mark">A</span
+          ><span class="brand-copy"><b>Amil Vendas</b><small>PAINEL DE ATENDIMENTO</small></span></a
+        >
+        <div class="crm-actions" id="crmActions" hidden>
+          <span class="secure-label"><i></i> CRM privado</span>
+          <button
+            class="icon-button"
+            id="exportCsv"
+            type="button"
+            aria-label="Baixar planilha Excel"
+            title="Baixar planilha Excel"
+          >
+            ⇩<span> Exportar</span>
+          </button>
+          <button class="icon-button logout-button" id="logout" type="button">Sair</button>
         </div>
+      </header>
 
-        <div class="charts-grid">
-          <article class="chart-card"><div class="chart-heading"><div><span class="eyebrow">PIPELINE</span><h3>Leads por etapa</h3></div><span class="chart-total" id="pipelineTotal">0 leads</span></div><div class="pipeline-chart" id="pipelineChart" aria-label="Quantidade de leads em cada etapa"></div></article>
-          <article class="chart-card"><div class="chart-heading"><div><span class="eyebrow">ÚLTIMOS 7 DIAS</span><h3>Novos pedidos</h3></div><span class="chart-total">Entradas por dia</span></div><div class="week-chart" id="weekChart" aria-label="Novos leads nos últimos sete dias"></div></article>
-        </div>
-
-        <article class="tip-card"><div class="tip-icon">✳</div><div><strong>Um bom atendimento começa rápido</strong><p>Chame os novos leads no WhatsApp e atualize a etapa para acompanhar cada oportunidade.</p></div><button class="text-button" type="button" data-go-leads>Ver novos <span aria-hidden="true">→</span></button></article>
+      <section class="login-card" id="loginPanel" hidden>
+        <span class="login-symbol">A</span>
+        <span class="eyebrow">Área da equipe</span>
+        <h1>Seus leads, organizados.</h1>
+        <p>Entre com a senha administrativa para acompanhar os pedidos de cotação.</p>
+        <form id="loginForm">
+          <label for="adminPassword">Senha de acesso</label>
+          <input
+            id="adminPassword"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Digite sua senha"
+            required
+          />
+          <button class="button button-primary" type="submit">
+            Acessar meu CRM <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <p class="crm-message" id="loginMessage" role="status"></p>
+        <a class="back-to-site" href="index.html">← Voltar para o site</a>
       </section>
 
-      <section class="tab-panel" id="leadsPanel" role="tabpanel" aria-labelledby="leadsTab" data-panel="leads" hidden>
-        <div class="section-heading leads-heading"><div><span class="eyebrow">ACOMPANHAMENTO</span><h2>Seus leads</h2><p id="visibleLeadCount">Gerencie cada pedido de cotação.</p></div></div>
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchLeads" type="search" placeholder="Buscar nome, telefone ou cidade..." autocomplete="off"><kbd>⌕</kbd></label>
-        <div class="filter-row" role="group" aria-label="Filtrar leads por etapa">
-          <button class="filter-chip is-selected" type="button" data-status-filter="Todos">Todos <b id="filterAllCount">0</b></button>
-          <button class="filter-chip" type="button" data-status-filter="Novo">Novos <b id="filterNewCount">0</b></button>
-          <button class="filter-chip" type="button" data-status-filter="Em contato">Em contato</button>
-          <button class="filter-chip" type="button" data-status-filter="Cotação enviada">Cotação enviada</button>
-          <button class="filter-chip" type="button" data-status-filter="Fechado">Fechados</button>
-          <button class="filter-chip" type="button" data-status-filter="Perdido">Perdidos</button>
+      <section class="dashboard" id="dashboard" hidden>
+        <div class="welcome-row">
+          <div>
+            <span class="eyebrow"><i></i> SEU ESPAÇO DE VENDAS</span>
+            <h1>Olá, equipe <span class="wave">✳</span></h1>
+            <p>Veja como estão os pedidos de cotação do seu site.</p>
+          </div>
+          <div class="today-card">
+            <span>HOJE</span><strong id="todayDate"></strong
+            ><small id="lastUpdated">Atualizando...</small>
+          </div>
         </div>
-        <div class="lead-list" id="leadList"></div>
-        <div class="empty-state" id="emptyState" hidden><span>⌕</span><strong>Nenhum lead por aqui</strong><p>Quando alguém pedir uma cotação, o contato aparece nesta lista.</p></div>
-        <p class="export-hint">Dica: você pode exportar seus leads para uma planilha Excel pelo botão no topo.</p>
-      </section>
-    </section>
-  </main>
 
-  <nav class="mobile-nav" id="mobileNav" aria-label="Navegação inferior do CRM" hidden>
-    <button class="mobile-nav-button is-active" type="button" data-tab="overview" aria-current="page"><span>◫</span>Resumo</button>
-    <button class="mobile-nav-button" type="button" data-tab="leads"><span>♙</span>Leads<b id="mobileLeadCount">0</b></button>
-    <button class="mobile-nav-button" id="mobileExport" type="button"><span>⇩</span>Exportar</button>
-  </nav>
-</body>
+        <nav class="tab-nav" role="tablist" aria-label="Seções do CRM">
+          <button
+            class="tab-button is-active"
+            id="overviewTab"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="overviewPanel"
+            data-tab="overview"
+          >
+            ◫ <span>Visão geral</span>
+          </button>
+          <button
+            class="tab-button"
+            id="leadsTab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="leadsPanel"
+            data-tab="leads"
+          >
+            ♙ <span>Meus leads</span><b class="tab-count" id="tabLeadCount">0</b>
+          </button>
+        </nav>
+
+        <p
+          class="crm-message dashboard-message"
+          id="dashboardMessage"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <section
+          class="tab-panel is-active"
+          id="overviewPanel"
+          role="tabpanel"
+          aria-labelledby="overviewTab"
+          data-panel="overview"
+        >
+          <div class="section-heading">
+            <div>
+              <h2>Resumo das cotações</h2>
+              <p>O movimento dos leads recebidos pelo formulário.</p>
+            </div>
+            <button class="text-button" type="button" data-go-leads>
+              Ver todos os leads <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card stat-total">
+              <span class="stat-icon">♙</span><span class="stat-label">Total de leads</span
+              ><strong id="totalLeads">0</strong><small>Todos os pedidos recebidos</small>
+            </article>
+            <article class="stat-card stat-new">
+              <span class="stat-icon">✦</span><span class="stat-label">Novos</span
+              ><strong id="newLeads">0</strong><small>Aguardando primeiro contato</small>
+            </article>
+            <article class="stat-card stat-active">
+              <span class="stat-icon">↗</span><span class="stat-label">Em atendimento</span
+              ><strong id="activeLeads">0</strong><small>Conversas em andamento</small>
+            </article>
+            <article class="stat-card stat-won">
+              <span class="stat-icon">✓</span><span class="stat-label">Fechados</span
+              ><strong id="wonLeads">0</strong><small>Cotações convertidas</small>
+            </article>
+            <article class="stat-card stat-clicks">
+              <span class="stat-icon">☏</span><span class="stat-label">WhatsApp direto</span
+              ><strong id="whatsappClicks">0</strong><small>Cliques sem formulário</small>
+            </article>
+          </div>
+
+          <div class="charts-grid">
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div>
+                  <span class="eyebrow">PIPELINE</span>
+                  <h3>Leads por etapa</h3>
+                </div>
+                <span class="chart-total" id="pipelineTotal">0 leads</span>
+              </div>
+              <div
+                class="pipeline-chart"
+                id="pipelineChart"
+                aria-label="Quantidade de leads em cada etapa"
+              ></div>
+            </article>
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div>
+                  <span class="eyebrow">ÚLTIMOS 7 DIAS</span>
+                  <h3>Novos pedidos</h3>
+                </div>
+                <span class="chart-total">Entradas por dia</span>
+              </div>
+              <div
+                class="week-chart"
+                id="weekChart"
+                aria-label="Novos leads nos últimos sete dias"
+              ></div>
+            </article>
+          </div>
+
+          <article class="tip-card">
+            <div class="tip-icon">✳</div>
+            <div>
+              <strong>Um bom atendimento começa rápido</strong>
+              <p>
+                Chame os novos leads no WhatsApp e atualize a etapa para acompanhar cada
+                oportunidade.
+              </p>
+            </div>
+            <button class="text-button" type="button" data-go-leads>
+              Ver novos <span aria-hidden="true">→</span>
+            </button>
+          </article>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="leadsPanel"
+          role="tabpanel"
+          aria-labelledby="leadsTab"
+          data-panel="leads"
+          hidden
+        >
+          <div class="section-heading leads-heading">
+            <div>
+              <span class="eyebrow">ACOMPANHAMENTO</span>
+              <h2>Seus leads</h2>
+              <p id="visibleLeadCount">Gerencie cada pedido de cotação.</p>
+            </div>
+          </div>
+          <label class="search-box"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="searchLeads"
+              type="search"
+              placeholder="Buscar nome, telefone ou cidade..."
+              autocomplete="off"
+            /><kbd>⌕</kbd></label
+          >
+          <div class="filter-row" role="group" aria-label="Filtrar leads por etapa">
+            <button class="filter-chip is-selected" type="button" data-status-filter="Todos">
+              Todos <b id="filterAllCount">0</b>
+            </button>
+            <button class="filter-chip" type="button" data-status-filter="Novo">
+              Novos <b id="filterNewCount">0</b>
+            </button>
+            <button class="filter-chip" type="button" data-status-filter="Em contato">
+              Em contato
+            </button>
+            <button class="filter-chip" type="button" data-status-filter="Cotação enviada">
+              Cotação enviada
+            </button>
+            <button class="filter-chip" type="button" data-status-filter="Fechado">Fechados</button>
+            <button class="filter-chip" type="button" data-status-filter="Perdido">Perdidos</button>
+          </div>
+          <div class="lead-list" id="leadList"></div>
+          <div class="empty-state" id="emptyState" hidden>
+            <span>⌕</span><strong>Nenhum lead por aqui</strong>
+            <p>Quando alguém pedir uma cotação, o contato aparece nesta lista.</p>
+          </div>
+          <p class="export-hint">
+            Dica: você pode exportar seus leads para uma planilha Excel pelo botão no topo.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Navegação inferior do CRM" hidden>
+      <button
+        class="mobile-nav-button is-active"
+        type="button"
+        data-tab="overview"
+        aria-current="page"
+      >
+        <span>◫</span>Resumo
+      </button>
+      <button class="mobile-nav-button" type="button" data-tab="leads">
+        <span>♙</span>Leads<b id="mobileLeadCount">0</b>
+      </button>
+      <button class="mobile-nav-button" id="mobileExport" type="button">
+        <span>⇩</span>Exportar
+      </button>
+    </nav>
+  </body>
 </html>
