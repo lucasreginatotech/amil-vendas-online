@@ -1,0 +1,17 @@
+.tracking-consent[hidden] { display: none; }
+.tracking-consent {
+  position: fixed; left: 16px; right: 16px; bottom: 88px; z-index: 1000;
+  max-width: 700px; margin-inline: auto; padding: 20px;
+  border: 1px solid #d5dde6; border-radius: 16px;
+  color: #102f54; background: #fff; box-shadow: 0 8px 32px #102f5433;
+  max-height: 65vh; overflow: auto;
+}
+.tracking-consent p { margin: 0 0 10px; font-size: 14px; line-height: 1.5; }
+.tracking-consent a { text-decoration: underline; font-size: 14px; }
+.tracking-consent div { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+.tracking-consent button, .tracking-preferences {
+  cursor: pointer; font: inherit; border: 1px solid #102f54; border-radius: 8px;
+  padding: 10px 14px; background: #fff; color: #102f54;
+}
+.tracking-preferences { margin-top: 16px; font-size: 12px; }
+.tracking-consent button:focus-visible, .tracking-preferences:focus-visible { outline: 3px solid #1696cf; outline-offset: 3px; }

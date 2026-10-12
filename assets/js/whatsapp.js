@@ -6,12 +6,15 @@
   // Falhas de rastreamento não interrompem o contato ou o retorno do formulário.
   function trackConversion(sendTo, parameters = {}) {
     try {
+      if (!window.SITE_ATTRIBUTION?.hasConsent()) return false;
       if (/^AW-17545602600\/[A-Za-z0-9_-]+$/.test(sendTo || '') && typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', { send_to: sendTo, ...parameters });
+        return true;
       }
     } catch {
       // Bloqueadores podem impedir o Google Ads; o atendimento continua.
     }
+    return false;
   }
 
   // Preenche os links de WhatsApp espalhados pelo site.
@@ -47,7 +50,11 @@
         fetch('/api/leads', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ source: 'whatsapp', source_detail: sourceDetail }),
+          body: JSON.stringify({
+            source: 'whatsapp', source_detail: sourceDetail,
+            submission_id: window.SITE_SUBMISSION.uuid(),
+            ...window.SITE_ATTRIBUTION.getPayload(),
+          }),
           keepalive: true,
         }).catch(() => {
           // O clique no WhatsApp continua mesmo se o CRM estiver indisponível.
@@ -87,8 +94,10 @@
 
   // Abre o WhatsApp diretamente durante o clique do usuário para evitar bloqueio
   // de pop-up enquanto a chamada de rede aguarda o banco de dados.
+  let inFlight = false;
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (inFlight) return;
     const fields = new FormData(form);
     const phoneDigits = String(fields.get('phone') || '').replace(/\D/g, '');
     if (!/^\d{10,11}$/.test(phoneDigits)) {
@@ -96,6 +105,7 @@
       form.elements.phone.reportValidity();
       return;
     }
+    inFlight = true;
     const message = [
       'Olá! Quero receber uma cotação de plano Amil pelo site Amil Vendas Online.',
       '',
@@ -137,30 +147,32 @@
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 12000);
     try {
+      const payload = {
+        name: fields.get('name'), email: fields.get('email'), phone: fields.get('phone'),
+        plan: fields.get('plan'), consent: fields.get('consent') === 'on',
+        source_detail: form.dataset.profile === 'mei' ? 'Formulário de cotação · MEI' : 'Formulário de cotação',
+      };
+      const submissionId = await window.SITE_SUBMISSION.prepare(payload);
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: fields.get('name'),
-          email: fields.get('email'),
-          phone: fields.get('phone'),
-          plan: fields.get('plan'),
-          consent: fields.get('consent') === 'on',
-          source_detail:
-            form.dataset.profile === 'mei'
-              ? 'Formulário de cotação · MEI'
-              : 'Formulário de cotação',
-        }),
+        body: JSON.stringify({ ...payload, submission_id: submissionId, ...window.SITE_ATTRIBUTION.getPayload() }),
         signal: controller.signal,
         keepalive: true,
       });
       if (!response.ok) throw new Error('Lead registration failed');
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario' });
-      trackConversion(window.SITE_CONFIG?.googleAdsConversionSendTo, {
-        value: 1.0,
-        currency: 'BRL',
-      });
+      const saved = await response.json();
+      if (!saved.ok || !/^[0-9a-f-]{36}$/i.test(saved.id)) throw new Error('Missing contact receipt');
+      if (!window.SITE_SUBMISSION.hasTracked(saved.id)) {
+        try {
+          if (!window.SITE_ATTRIBUTION.hasConsent()) throw new Error('Measurement not authorized');
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario', lead_id: saved.id });
+        } catch { /* O recibo do CRM continua válido com rastreamento bloqueado. */ }
+        if (trackConversion(window.SITE_CONFIG?.googleAdsConversionSendTo, {
+          value: 1.0, currency: 'BRL', transaction_id: saved.id,
+        })) window.SITE_SUBMISSION.markTracked(saved.id);
+      }
       showStatus(
         'Pedido recebido! Nossa equipe entrará em contato para preparar sua cotação.',
         whatsappUrl,
@@ -173,6 +185,7 @@
         whatsappUrl,
       );
     } finally {
+      inFlight = false;
       window.clearTimeout(timeout);
       submitButton.disabled = false;
       submitButton.replaceChildren(...originalButtonContents.map((node) => node.cloneNode(true)));

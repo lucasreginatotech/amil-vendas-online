@@ -63,7 +63,9 @@
     document.querySelector('#activeLeads').textContent = String(
       count('Em contato') + count('Cotação enviada'),
     );
-    document.querySelector('#wonLeads').textContent = String(count('Fechado'));
+    document.querySelector('#wonLeads').textContent = String(
+      leads.filter((lead) => lead.status === 'Fechado' && lead.source !== 'whatsapp').length,
+    );
     document.querySelector('#whatsappClicks').textContent = String(
       leads.filter((lead) => lead.source === 'whatsapp').length,
     );
@@ -117,6 +119,9 @@
         lead.state,
         lead.source,
         lead.source_detail,
+        lead.utm_source,
+        lead.utm_medium,
+        lead.utm_campaign,
       ]
         .join(' ')
         .toLocaleLowerCase('pt-BR')
@@ -163,10 +168,12 @@
         return `<article class="lead-card" data-id="${escapeHtml(lead.id)}">
         <div class="lead-card-top"><span class="lead-avatar">${escapeHtml(initial)}</span><div class="lead-identity"><strong>${escapeHtml(leadName)}</strong><span>${escapeHtml(location)}</span></div><span class="status-badge status-badge-${statuses.indexOf(lead.status)}">${escapeHtml(lead.status)}</span></div>
         <div class="lead-origin ${directWhatsapp ? 'origin-whatsapp' : 'origin-form'}"><b>${directWhatsapp ? 'Clique direto no WhatsApp' : 'Formulário de cotação'}</b>${lead.source_detail ? `<small>${escapeHtml(lead.source_detail)}</small>` : ''}</div>
+        <div class="lead-origin"><b>Origem: ${escapeHtml(lead.utm_source || (lead.gclid || lead.gbraid || lead.wbraid ? 'Google Ads' : lead.tracking_consent === false ? 'Medição não autorizada' : 'Não registrada'))}</b><small>Campanha: ${escapeHtml(lead.utm_campaign || 'Não informada')}${lead.utm_medium ? ` · ${escapeHtml(lead.utm_medium)}` : ''}</small></div>
         <div class="lead-contact">${contactInfo}</div>
         <div class="lead-interest"><span>INTERESSE</span><strong>${escapeHtml(lead.plan || 'Cotação de plano Amil')}</strong><small>${interest}</small></div>
         <div class="lead-card-meta"><span>Recebido ${escapeHtml(formatDate(lead.created_at))}</span><button class="delete-lead" type="button" aria-label="Excluir lead de ${escapeHtml(lead.name)}" title="Excluir lead">Excluir</button></div>
         <details class="lead-notes"><summary>${lead.notes ? 'Ver / editar anotação' : 'Adicionar anotação'}</summary><textarea class="notes-input" maxlength="5000" placeholder="Ex.: chamar amanhã às 10h">${escapeHtml(lead.notes || '')}</textarea></details>
+        ${!directWhatsapp ? `<label class="status-field"><span>Valor da venda (R$, opcional)</span><input class="sale-value-input" type="number" min="0" max="9999999999.99" step="0.01" value="${escapeHtml(lead.sale_value ?? '')}" /></label>` : ''}
         <div class="lead-card-bottom"><label class="status-field"><span>Etapa do atendimento</span><select class="status-select" aria-label="Etapa do atendimento">${options}</select></label><div class="lead-buttons">${whatsappUrl ? `<a class="contact-lead" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>` : ''}<button class="save-lead" type="button">Salvar</button></div></div>
       </article>`;
       })
@@ -204,6 +211,9 @@
       'Recebido em',
       'Origem',
       'Detalhe da origem',
+      'UTM origem', 'UTM mídia', 'UTM campanha', 'UTM termo', 'UTM conteúdo',
+      'GCLID', 'GBRAID', 'WBRAID', 'Consentimento de medição', 'Autorizado em', 'Origem capturada em',
+      'ID do contato', 'Fechado em', 'Valor da venda (BRL)',
       'Nome',
       'E-mail',
       'WhatsApp',
@@ -214,13 +224,21 @@
       'Status',
       'Anotações',
     ];
-    const quote = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+    const quote = (value) => {
+      let text = String(value ?? '');
+      if (/^[\s]*[=+@-]/.test(text)) text = `'${text}`;
+      return `"${text.replace(/"/g, '""')}"`;
+    };
     const lines = [
       headers,
       ...leads.map((lead) => [
         new Date(lead.created_at).toLocaleString('pt-BR'),
         lead.source === 'whatsapp' ? 'Clique direto no WhatsApp' : 'Formulário de cotação',
         lead.source_detail,
+        lead.utm_source, lead.utm_medium, lead.utm_campaign, lead.utm_term, lead.utm_content,
+        lead.gclid, lead.gbraid, lead.wbraid,
+        lead.tracking_consent == null ? '' : lead.tracking_consent ? 'Sim' : 'Não',
+        lead.tracking_consent_at, lead.attribution_captured_at, lead.id, lead.closed_at, lead.sale_value,
         lead.name,
         lead.email,
         lead.phone,
@@ -311,11 +329,13 @@
           id: lead.id,
           status: card.querySelector('.status-select').value,
           notes: card.querySelector('.notes-input').value,
+          ...(card.querySelector('.sale-value-input') ? { sale_value: card.querySelector('.sale-value-input').value } : {}),
         }),
       });
       if (!response.ok) throw new Error('Não consegui salvar as alterações. Tente novamente.');
       lead.status = card.querySelector('.status-select').value;
       lead.notes = card.querySelector('.notes-input').value;
+      if (card.querySelector('.sale-value-input')) lead.sale_value = card.querySelector('.sale-value-input').value || null;
       dashboardMessage.className = 'crm-message dashboard-message is-success';
       dashboardMessage.textContent = 'Alterações salvas.';
       renderDashboard();

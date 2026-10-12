@@ -6,6 +6,8 @@ Guia rápido dos arquivos para localizar cada parte do site e do CRM.
 
 - `index.html`, `planos.html`, `rede-credenciada.html` e `sobre.html`: páginas que o visitante acessa.
 - `assets/js/config.js`: número do WhatsApp usado pelo site.
+- `assets/js/attribution.js`: consentimento opcional e origem UTMs/IDs nas quatro páginas.
+- `assets/js/submission.js`: UUID de envio, hash de reenvio e recibos de conversão.
 - `assets/js/whatsapp.js`: links do WhatsApp, registro de cliques diretos e envio da cotação ao CRM.
 - `assets/js/navigation.js`: menu para celular.
 - `assets/js/main.js`: pequenas funções comuns, como o ano do rodapé.

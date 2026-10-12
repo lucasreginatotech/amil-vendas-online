@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17545602600"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'AW-17545602600');
+      gtag('consent', 'default', {
+        ad_storage: 'denied', ad_user_data: 'denied',
+        ad_personalization: 'denied', analytics_storage: 'denied'
+      });
     </script>
     <meta name="theme-color" content="#102f54" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -39,7 +41,10 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="assets/css/tracking.css" />
     <script defer src="assets/js/config.js"></script>
+    <script defer src="assets/js/attribution.js"></script>
+    <script defer src="assets/js/submission.js"></script>
     <script defer src="assets/js/navigation.js"></script>
     <script defer src="assets/js/whatsapp.js"></script>
     <script defer src="assets/js/main.js"></script>

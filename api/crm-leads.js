@@ -13,9 +13,14 @@ module.exports = async (req, res) => {
 
   try {
     if (req.method === 'GET') {
-      const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes,source,source_detail&order=created_at.desc&limit=1000`;
+      const fields = 'id,created_at,name,email,phone,plan,lives,city,state,status,notes,source,source_detail,utm_source,utm_medium,utm_campaign,utm_term,utm_content,gclid,gbraid,wbraid,tracking_consent,tracking_consent_at,attribution_captured_at,closed_at,sale_value';
+      const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=${fields}&order=created_at.desc&limit=1000`;
       let response = await fetch(url, { headers: { apikey: SUPABASE_SECRET_KEY } });
       // Keeps the existing CRM readable while an older Supabase schema awaits migration.
+      if (!response.ok) {
+        const previousUrl = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes,source,source_detail&order=created_at.desc&limit=1000`;
+        response = await fetch(previousUrl, { headers: { apikey: SUPABASE_SECRET_KEY } });
+      }
       if (!response.ok) {
         const legacyUrl = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?select=id,created_at,name,email,phone,plan,lives,city,state,status,notes&order=created_at.desc&limit=1000`;
         response = await fetch(legacyUrl, { headers: { apikey: SUPABASE_SECRET_KEY } });
@@ -40,6 +45,13 @@ module.exports = async (req, res) => {
       const statuses = ['Novo', 'Em contato', 'Cotação enviada', 'Fechado', 'Perdido'];
       if (!/^[0-9a-f-]{36}$/i.test(id) || !statuses.includes(status))
         return sendJson(res, 400, { error: 'Dados inválidos.' });
+      const update = { status, notes };
+      if (Object.prototype.hasOwnProperty.call(input, 'sale_value')) {
+        const value = input.sale_value === '' || input.sale_value === null ? null : Number(input.sale_value);
+        if (value !== null && (!Number.isFinite(value) || value < 0 || value > 9999999999.99))
+          return sendJson(res, 400, { error: 'Valor de venda inválido.' });
+        update.sale_value = value;
+      }
       const url = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/leads?id=eq.${encodeURIComponent(id)}`;
       const response = await fetch(url, {
         method: 'PATCH',
@@ -48,7 +60,7 @@ module.exports = async (req, res) => {
           'Content-Type': 'application/json',
           Prefer: 'return=minimal',
         },
-        body: JSON.stringify({ status, notes }),
+        body: JSON.stringify(update),
       });
       if (!response.ok) return sendJson(res, 502, { error: 'Could not update this lead.' });
       return sendJson(res, 200, { ok: true });
