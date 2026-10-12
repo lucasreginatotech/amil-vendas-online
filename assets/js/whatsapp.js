@@ -3,8 +3,20 @@
   const whatsappNumber = window.SITE_CONFIG?.whatsappNumber || '';
   const configured = /^\d{12,15}$/.test(whatsappNumber);
 
+  // Falhas de rastreamento não interrompem o contato ou o retorno do formulário.
+  function trackConversion(sendTo, parameters = {}) {
+    try {
+      if (/^AW-17545602600\/[A-Za-z0-9_-]+$/.test(sendTo || '') && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', { send_to: sendTo, ...parameters });
+      }
+    } catch {
+      // Bloqueadores podem impedir o Google Ads; o atendimento continua.
+    }
+  }
+
   // Preenche os links de WhatsApp espalhados pelo site.
-  document.querySelectorAll('.js-whatsapp').forEach((link) => {
+  document.querySelectorAll('a.js-whatsapp').forEach((link) => {
+    if (link.closest('#quoteForm')) return;
     const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     icon.setAttribute('viewBox', '0 0 32 32');
     icon.setAttribute('aria-hidden', 'true');
@@ -40,6 +52,7 @@
         }).catch(() => {
           // O clique no WhatsApp continua mesmo se o CRM estiver indisponível.
         });
+        trackConversion(window.SITE_CONFIG?.googleAdsWhatsAppConversionSendTo);
       });
     } else {
       link.addEventListener('click', (event) => {
@@ -144,14 +157,10 @@
       if (!response.ok) throw new Error('Lead registration failed');
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario' });
-      const conversionSendTo = window.SITE_CONFIG?.googleAdsConversionSendTo || '';
-      if (/^AW-17545602600\/[A-Za-z0-9_-]+$/.test(conversionSendTo) && typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          send_to: conversionSendTo,
-          value: 1.0,
-          currency: 'BRL',
-        });
-      }
+      trackConversion(window.SITE_CONFIG?.googleAdsConversionSendTo, {
+        value: 1.0,
+        currency: 'BRL',
+      });
       showStatus(
         'Pedido recebido! Nossa equipe entrará em contato para preparar sua cotação.',
         whatsappUrl,

@@ -23,7 +23,13 @@ Salve as variáveis e publique um novo deployment. Elas só se aplicam a deploym
 
 Abra `https://SEU-DOMINIO/crm.html` e entre com `CRM_ADMIN_PASSWORD`. Não coloque a senha ou a chave secreta em arquivos do projeto nem as envie no chat.
 
-## Formulário simplificado
+## Conversão de clique direto no WhatsApp
+
+A conversão de clique usa exatamente `AW-17545602600/I3jvCLO34JodEKjMsq5B`, configurado em `googleAdsWhatsAppConversionSendTo` no arquivo `assets/js/config.js`. O evento é enviado uma vez por clique nos links `a.js-whatsapp` fora do formulário, incluindo o botão flutuante das quatro páginas públicas. O evento contém apenas `send_to`, sem dados pessoais. Ele não dispara no carregamento, no botão de envio, na abertura automática do WhatsApp pelo formulário nem no link de recuperação. A classificação como secundária é feita na conta do Google Ads.
+
+O clique continua sendo registrado no CRM com `source: 'whatsapp'` e abre o WhatsApp normalmente, mesmo se a tag estiver indisponível ou lançar erro. A conversão principal continua dependendo da confirmação da API do CRM. Execute `node scripts/test-whatsapp-tracking.mjs` para validar os handlers reais com DOM, API e Google Ads simulados, sem gerar leads reais.
+
+## Envio da cotação
 
 A cotação pede nome, WhatsApp e e-mail, com autorização de contato. Tipo de plano pode vir do perfil escolhido; quantidade de pessoas, cidade e estado ficam vazios até o atendimento. O esquema atual já aceita esses campos vazios. A API continua aceitando cadastros antigos completos.
 
