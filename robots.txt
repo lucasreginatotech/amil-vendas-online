@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://amil-vendas-online.vercel.app/sitemap.xml
+Sitemap: https://www.vendasamilpmeonline.com.br/sitemap.xml
