@@ -1,6 +1,6 @@
 // Número usado pelos links e pelo formulário do WhatsApp (país + DDD + número).
 window.SITE_CONFIG = {
   whatsappNumber: '551134125912',
-  // Preencher com o send_to completo do snippet da conversão de cotação.
-  googleAdsConversionSendTo: '',
+  // Destino do evento de cotação enviada fornecido pelo Google Ads.
+  googleAdsConversionSendTo: 'AW-17545602600/GndqCJ6o5ZodEKjMsq5B',
 };

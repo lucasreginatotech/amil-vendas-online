@@ -146,7 +146,11 @@
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario' });
       const conversionSendTo = window.SITE_CONFIG?.googleAdsConversionSendTo || '';
       if (/^AW-17545602600\/[A-Za-z0-9_-]+$/.test(conversionSendTo) && typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', { send_to: conversionSendTo });
+        window.gtag('event', 'conversion', {
+          send_to: conversionSendTo,
+          value: 1.0,
+          currency: 'BRL',
+        });
       }
       showStatus(
         'Pedido recebido! Nossa equipe entrará em contato para preparar sua cotação.',
