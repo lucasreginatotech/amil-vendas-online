@@ -76,11 +76,6 @@
   // de pop-up enquanto a chamada de rede aguarda o banco de dados.
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!configured) {
-      window.alert('O WhatsApp ainda não foi configurado.');
-      return;
-    }
-
     const fields = new FormData(form);
     const phoneDigits = String(fields.get('phone') || '').replace(/\D/g, '');
     if (!/^\d{10,11}$/.test(phoneDigits)) {
@@ -94,25 +89,19 @@
       `Nome: ${fields.get('name')}`,
       `E-mail: ${fields.get('email')}`,
       `WhatsApp: ${fields.get('phone')}`,
-      `Tipo de plano: ${fields.get('plan')}`,
-      `Quantidade de vidas: ${fields.get('lives')}`,
-      `Região: ${fields.get('city')} - ${fields.get('state')}`,
+      ...(form.dataset.profile ? [`Interesse: ${fields.get('plan')}`] : []),
       ...(form.dataset.profile === 'mei'
         ? ['Perfil: MEI — solicitar análise de elegibilidade']
         : []),
-      ...(fields.get('priority') ? [`Minha prioridade: ${fields.get('priority')}`] : []),
-      ...(fields.get('provider')
-        ? [
-            `Prestador que gostaria de confirmar: ${String(fields.get('provider')).trim().slice(0, 160)}`,
-          ]
-        : []),
     ].join('\n');
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = configured
+      ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+      : '';
 
     // Abre primeiro, sem esperar a gravação assíncrona.
     let whatsappOpened = false;
     try {
-      const whatsappWindow = window.open(whatsappUrl, '_blank');
+      const whatsappWindow = whatsappUrl ? window.open(whatsappUrl, '_blank') : null;
       if (whatsappWindow) {
         whatsappWindow.opener = null;
         whatsappOpened = true;
@@ -123,11 +112,11 @@
 
     const originalButtonContents = [...submitButton.childNodes].map((node) => node.cloneNode(true));
     submitButton.disabled = true;
-    submitButton.textContent = 'Preparando seu atendimento...';
+    submitButton.textContent = 'Enviando seu pedido...';
     showStatus(
       whatsappOpened
         ? 'Mensagem pronta no WhatsApp. Registrando seu pedido...'
-        : 'Mensagem pronta. Se o WhatsApp não abrir, use o link:',
+        : 'Registrando seu pedido de cotação...',
       whatsappUrl,
     );
 
@@ -143,9 +132,6 @@
           email: fields.get('email'),
           phone: fields.get('phone'),
           plan: fields.get('plan'),
-          lives: fields.get('lives'),
-          city: fields.get('city'),
-          state: fields.get('state'),
           consent: fields.get('consent') === 'on',
           source_detail:
             form.dataset.profile === 'mei'
@@ -156,13 +142,17 @@
         keepalive: true,
       });
       if (!response.ok) throw new Error('Lead registration failed');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario' });
       showStatus(
-        'Pedido recebido. Revise e envie sua mensagem no WhatsApp para continuar.',
+        'Pedido recebido! Nossa equipe entrará em contato para preparar sua cotação.',
         whatsappUrl,
       );
     } catch {
       showStatus(
-        'Não foi possível registrar o formulário. Você pode continuar pelo WhatsApp com a mensagem preparada.',
+        whatsappUrl
+          ? 'Não foi possível registrar seu pedido. Continue pelo WhatsApp com a mensagem preparada.'
+          : 'Não foi possível registrar seu pedido. Tente enviar novamente.',
         whatsappUrl,
       );
     } finally {

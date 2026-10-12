@@ -220,6 +220,17 @@
   margin-bottom: 22px;
   border-radius: 0 8px 8px 0;
 }
+.quote-fields-simple {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.quote-fields-simple .field {
+  grid-column: 1 / -1;
+}
+.quote-form-heading {
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .quote-profile b {
   font-size: 0.95rem;
 }

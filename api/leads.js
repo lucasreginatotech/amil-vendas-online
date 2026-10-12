@@ -56,21 +56,17 @@ module.exports = async (req, res) => {
   const email = clean(input.email, 254).toLowerCase();
   const name = clean(input.name, 160);
   const phone = clean(input.phone, 40);
-  const plan = clean(input.plan, 100);
-  const lives = Number(input.lives);
-  const city = clean(input.city, 100);
-  const state = clean(input.state, 2).toUpperCase();
+  const plan = clean(input.plan, 100) || 'Ainda quero orientação';
+  const lives = input.lives == null || input.lives === '' ? null : Number(input.lives);
+  const city = clean(input.city, 100) || null;
+  const state = clean(input.state, 100).toUpperCase() || null;
 
   if (
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
     !name ||
-    !phone ||
-    !plan ||
-    !Number.isInteger(lives) ||
-    lives < 1 ||
-    lives > 999 ||
-    !city ||
-    !/^[A-Z]{2}$/.test(state) ||
+    !/^\d{10,11}$/.test(phone.replace(/\D/g, '')) ||
+    (lives !== null && (!Number.isInteger(lives) || lives < 1 || lives > 999)) ||
+    (state !== null && !/^[A-Z]{2}$/.test(state)) ||
     input.consent !== true
   ) {
     return sendJson(res, 400, { error: 'Please check the required fields and consent.' });

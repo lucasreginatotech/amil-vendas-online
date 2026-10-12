@@ -22,3 +22,9 @@ Salve as variáveis e publique um novo deployment. Elas só se aplicam a deploym
 ## Acesso ao painel
 
 Abra `https://SEU-DOMINIO/crm.html` e entre com `CRM_ADMIN_PASSWORD`. Não coloque a senha ou a chave secreta em arquivos do projeto nem as envie no chat.
+
+## Formulário simplificado
+
+A cotação pede nome, WhatsApp e e-mail, com autorização de contato. Tipo de plano pode vir do perfil escolhido; quantidade de pessoas, cidade e estado ficam vazios até o atendimento. O esquema atual já aceita esses campos vazios. A API continua aceitando cadastros antigos completos.
+
+Após a confirmação da API, o site publica o evento `generate_lead` no `dataLayer`, sem nome, telefone ou e-mail. Vincule esse evento à conversão do Google Ads pelo Google Tag Manager e valide a tag antes de iniciar a campanha; nenhum ID de anúncio foi inserido no código. Cliques diretos no WhatsApp permanecem separados dos cadastros confirmados.

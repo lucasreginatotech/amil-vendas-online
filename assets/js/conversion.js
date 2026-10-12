@@ -6,25 +6,25 @@
       plan: 'Individual ou familiar',
       title: 'Cotação para você e sua família',
       description:
-        'Vamos conferir as modalidades disponíveis na sua cidade e os critérios de contratação para seu perfil.',
+        'Deixe seu contato. As opções para sua família serão confirmadas no atendimento.',
     },
     empresa: {
       plan: 'Empresarial / PME',
       title: 'Cotação para sua empresa',
       description:
-        'Informe a quantidade de pessoas. Durante o atendimento, a equipe confirma o CNPJ, os vínculos e as condições do produto.',
+        'Deixe seu contato para comparar opções de plano Amil empresarial e PME.',
     },
     mei: {
       plan: 'Empresarial / PME',
       title: 'Cotação para MEI',
       description:
-        'A equipe verificará a elegibilidade do seu MEI, os documentos e as regras aplicáveis ao produto desejado.',
+        'Deixe seu contato. Nossa equipe verifica a elegibilidade do seu MEI na conversa.',
     },
     dental: {
       plan: 'Plano odontológico',
       title: 'Cotação odontológica',
       description:
-        'Vamos conferir os produtos odontológicos disponíveis, os procedimentos previstos e a rede na sua região.',
+        'Deixe seu contato para consultar opções de plano odontológico Amil.',
     },
   };
   const notice = document.querySelector('#quoteProfile');
