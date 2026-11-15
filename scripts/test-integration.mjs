@@ -187,7 +187,9 @@ assert.equal(prepareSaleConversion(sale, settings).payload.order_id, `sale:${sal
 for (const page of ['index.html', 'planos.html', 'sobre.html', 'rede-credenciada.html']) {
   const html = await fs.readFile(new URL(page, root), 'utf8');
   for (const script of ['attribution.js', 'submission.js', 'whatsapp.js']) assert.equal(html.split(`assets/js/${script}`).length - 1, 1);
-  assert.match(html, /gtag\('consent', 'default'/); assert.doesNotMatch(html, /<script async src="https:\/\/www.googletagmanager/);
+  assert.match(html, /gtag\('consent', 'default'/);
+  assert.equal(html.split('<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17545602600"></script>').length - 1, 1);
+  assert.equal(html.split("gtag('config', 'AW-17545602600'").length - 1, 1);
   assert.match(html, /floating-contact js-whatsapp/);
 }
 results.push('PASS: vendas desativadas; cliques e vendas retroativas inelegíveis; scripts únicos nas quatro páginas.');

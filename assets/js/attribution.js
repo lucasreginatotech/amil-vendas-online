@@ -22,7 +22,6 @@
       && (field.startsWith('utm_') || /^[A-Za-z0-9_-]+$/.test(value))) incoming[field] = value;
   }
   let attribution = null;
-  let configured = false;
   let panel;
   function hasConsent() {
     return choice?.state === 'granted' && choice.at <= Date.now() && Date.now() - choice.at < 180 * DAY;
@@ -47,15 +46,6 @@
       const allowed = hasConsent() ? 'granted' : 'denied';
       window.gtag('consent', 'update', { ad_storage: allowed, ad_user_data: allowed,
         analytics_storage: allowed, ad_personalization: 'denied' });
-      // Modo básico: config somente após autorização, sem pings de conversão recusados.
-      if (hasConsent() && !configured) {
-        configured = true;
-        window.gtag('config', 'AW-17545602600', { allow_ad_personalization_signals: false });
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17545602600';
-        document.head.append(script);
-      }
     } catch { /* Consentimento e CRM funcionam mesmo com Google Ads bloqueado. */ }
   }
   function choose(state) {
